@@ -168,6 +168,7 @@ class PayFragment : Fragment() {
         binding.txtVorcher.setOnClickListener {
             checkVoucherDone = !checkVoucherDone
             if (binding.txtVorcher.text == requireContext().getString(R.string.delete)) {
+
                 binding.edtVorcher.setText("")
                 voucher_available = 1
                 val price = totalPricePay
@@ -198,23 +199,15 @@ class PayFragment : Fragment() {
         }
 
         binding.checkBoxPay.setOnCheckedChangeListener { _, isChecked ->
-            var price = totalPricePay
-            if (checkVoucherDone) {
-                price = totalPricePay - priceVoucher
-            }
+
             if (isChecked) {
                 checkPayOnline = 1
-                binding.priceAmongTotalProduct.text =
-                    (price - (price * (reductionRate / 100)).toInt()).toString()
+
             } else {
                 checkPayOnline = 0
-                if (price > binding.priceAmongTotalProduct.text.toString().toInt()) {
-                    binding.priceAmongTotalProduct.text =
-                        (price - (price * (reductionRate / 100)).toInt()).toString()
-                }
-                binding.priceAmongTotalProduct.text = price.toString()
-
             }
+            checkVoucher(switch, binding.edtVorcher.text.toString(), binding)
+
 
         }
         binding.btnOder.setOnClickListener {
@@ -354,9 +347,7 @@ class PayFragment : Fragment() {
             builder.setCustomTitle(titleTextView)
 
             builder.setAdapter(adapter) { _, which ->
-
                 val selectedItem = items[which]
-                checkVoucher(switch, selectedItem.key, binding)
                 binding.txtVorcher.text = requireContext().getString(R.string.delete)
                 checkVoucherDone = true
                 binding.txtVorcher.setTextColor(
@@ -369,6 +360,7 @@ class PayFragment : Fragment() {
                     binding.vocherAdd.visibility = View.VISIBLE
                 }
                 binding.edtVorcher.setText(selectedItem.key)
+                checkVoucher(switch, selectedItem.key, binding)
 
             }
 
@@ -383,12 +375,7 @@ class PayFragment : Fragment() {
                     s: CharSequence?, start: Int, before: Int, count: Int
                 ) {
                     checkVoucher(switch, binding.edtVorcher.text.toString(), binding)
-                    var price = totalPricePay
-                    binding.priceAmongTotalProduct.text = price.toString()
-                    if (checkPayOnline == 1) {
-                        binding.priceAmongTotalProduct.text =
-                            (price - (price * (reductionRate / 100)).toInt()).toString()
-                    }
+
                     binding.txtVorcher.text = getString(R.string.apply)
                     binding.txtVorcher.setTextColor(
                         ContextCompat.getColor(
@@ -397,12 +384,7 @@ class PayFragment : Fragment() {
                     )
                     items.forEach {
                         if (it.key == s.toString()) {
-                            price = totalPricePay - priceVoucher
-                            binding.priceAmongTotalProduct.text = price.toString()
-                            if (checkPayOnline == 1) {
-                                binding.priceAmongTotalProduct.text =
-                                    (price - (price * (reductionRate / 100)).toInt()).toString()
-                            }
+                            checkVoucher(switch, binding.edtVorcher.text.toString(), binding)
                             binding.txtVorcher.text = requireContext().getString(R.string.delete)
                             binding.txtVorcher.setTextColor(
                                 ContextCompat.getColor(
@@ -475,6 +457,7 @@ class PayFragment : Fragment() {
                         requireContext(), android.R.color.holo_red_light
                     )
                 )
+                priceVoucher=vouchers.response.money
 
                 if (vouchers.response.voucher_available == 1) {
                     voucher_available = vouchers.response.voucher_available
@@ -489,7 +472,15 @@ class PayFragment : Fragment() {
                         binding.priceAmongTotalProduct.text =
                             "${total - (total * (reductionRate / 100)).toInt()}"
                     }
+                }else{
+                    val total = totalPricePay
+                    binding.priceAmongTotalProduct.text = "$total"
+                    if (checkPayOnline == 1) {
+                        binding.priceAmongTotalProduct.text =
+                            "${total - (total * (reductionRate / 100)).toInt()}"
+                    }
                 }
+
 
             }
         }
