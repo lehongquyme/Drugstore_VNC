@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBarHome"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one_Hundred"
+        app:layout_constraintHeight_percent="0.1"
+        android:background="@drawable/boderhome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appBarHomeSmall"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/_zero"
+            android:background="@drawable/boderhome"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/backCategory"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/fifteen"
+                android:src="@drawable/baseline_arrow_back_ios_new_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/textViewCategory"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.2"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textViewCategory"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/cart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twentySp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/backCategory"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.75"
+                tools:ignore="TextContrastCheck" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="@dimen/_zero"
+                app:layout_constraintDimensionRatio="1:1"
+                app:cardCornerRadius="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewCategory"
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:id="@+id/imageTitleCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/flashimage"
+                    tools:ignore="ContentDescription,ImageContrastCheck" />
+
+
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/searchTextInputLayout"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/_zero"
+            android:layout_marginHorizontal="@dimen/fifteen"
+            android:layout_marginVertical="@dimen/fifteen"
+            android:background="@drawable/boderwhite"
+            android:drawableEnd="@drawable/baseline_close_24"
+            android:drawableTintMode="add"
+            android:hint="@string/search"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/fifteen"
+            android:textColorHint="#DD2C00"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarHomeSmall"
+            tools:ignore="Autofill,TouchTargetSizeCheck,TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewLoadMore"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="@dimen/_zero"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarSelect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarHome"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBarSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:paddingLeft="@dimen/eightSp"
+        android:paddingRight="@dimen/eightSp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

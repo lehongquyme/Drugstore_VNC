@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.drugstore_vnc.fragment.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_listCartFragment2"
+            app:destination="@id/listCartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_selectedFragment"
+            app:destination="@id/selectedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.drugstore_vnc.fragment.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/action_categoryFragment_to_selectCategoryFragment"
+            app:destination="@id/selectCategoryFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.drugstore_vnc.fragment.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageFragment"
+        android:name="com.example.drugstore_vnc.fragment.manager.ManageFragment"
+        android:label="fragment_manage"
+        tools:layout="@layout/fragment_manage">
+
+        <action
+            android:id="@+id/action_manageFragment_to_infoManagerFragment"
+            app:destination="@id/infoManagerFragment" />
+        <action
+            android:id="@+id/action_manageFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+        <action
+            android:id="@+id/action_manageFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listCartFragment"
+        android:name="com.example.drugstore_vnc.fragment.home.ListCartFragment"
+        android:label="fragment_list_cart"
+        tools:layout="@layout/fragment_list_cart">
+        <action
+            android:id="@+id/action_listCartFragment_to_payFragment"
+            app:destination="@id/payFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="com.example.drugstore_vnc.fragment.home.PayFragment"
+        android:label="fragment_pay"
+        tools:layout="@layout/fragment_pay">
+        <action
+            android:id="@+id/action_payFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_payFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="WebViewFragment"
+        android:label="WebViewFragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.drugstore_vnc.fragment.history.DetailFragment"
+        android:label="DetailFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.drugstore_vnc.fragment.search.SearchFragment"
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/action_searchFragment_to_itemSearchFragment"
+            app:destination="@id/itemSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedFragment"
+        android:name="com.example.drugstore_vnc.fragment.home.SelectedFragment"
+        android:label="fragment_selected"
+        tools:layout="@layout/fragment_selected" />
+    <fragment
+        android:id="@+id/itemSearchFragment"
+        android:name="com.example.drugstore_vnc.fragment.category.ItemSearchFragment"
+        android:label="ItemSearchFragment">
+        <action
+            android:id="@+id/action_itemSearchFragment_to_listCartFragment"
+            app:destination="@id/listCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectCategoryFragment"
+        android:name="SelectCategoryFragment"
+        android:label="SelectCategoryFragment" />
+    <fragment
+        android:id="@+id/infoManagerFragment"
+        android:name="com.example.drugstore_vnc.fragment.manager.InfoManagerFragment"
+        android:label="fragment_info_manager"
+        tools:layout="@layout/fragment_info_manager" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.drugstore_vnc.fragment.manager.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.drugstore_vnc.fragment.manager.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+
+
+</navigation>

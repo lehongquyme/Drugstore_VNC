@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fifteen"
+        android:background="@drawable/bodersignup"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/_ten"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageItemProduct"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/one_Hundred_Twenty"
+            android:layout_margin="@dimen/_ten"
+            android:importantForAccessibility="no"
+            android:src="@drawable/iconviewmore"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck,ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/txtItemKM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_five"
+            android:layout_marginTop="@dimen/_five"
+            android:background="@drawable/boderwhite"
+            android:backgroundTint="#F30B0B"
+            android:paddingHorizontal="@dimen/fifteen"
+            android:paddingVertical="@dimen/_five"
+            android:text="KM"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,MissingConstraints" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/_zero"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+
+            app:layout_constraintStart_toEndOf="@+id/imageItemProduct"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+
+            <TextView
+                android:id="@+id/nameItemProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/_name"
+                android:textSize="@dimen/fifteenSp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listHashTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/bonusCoinsItemProduct"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameItemProduct" />
+
+            <TextView
+                android:id="@+id/bonusCoinsItemProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/bonus_Coins"
+                android:textColor="#FF9E16"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listHashTag"
+                tools:ignore="MissingConstraints,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/packingItemProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/packing"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bonusCoinsItemProduct"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/priceItemProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/price_Item_Product"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/packingItemProduct"
+                tools:ignore="MissingConstraints,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/sellPriceItemProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/sell_Price_Item_Product"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceItemProduct"
+                tools:ignore="MissingConstraints,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/amongMinItemProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/amongmin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sellPriceItemProduct"
+                tools:ignore="MissingConstraints" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_ten"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1">
+
+        <TextView
+            android:id="@+id/nameChooseAmong"
+            android:layout_width="@dimen/one_Hundred"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_Among"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/among"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/minus"
+
+                    android:layout_width="@dimen/_zero"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/boderwhite"
+                    android:backgroundTint="@color/green"
+                    android:src="@drawable/baseline_remove_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                <EditText
+                    android:id="@+id/edtAmong"
+                    android:layout_width="@dimen/fifty"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_ten"
+                    android:layout_marginHorizontal="@dimen/_ten"
+                    android:background="@drawable/bodersignup"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:paddingHorizontal="@dimen/_ten"
+                    android:text="1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="16:9"
+                    app:layout_constraintEnd_toStartOf="@+id/add"
+                    app:layout_constraintStart_toEndOf="@+id/minus"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText,LabelFor,TouchTargetSizeCheck"
+                    android:importantForAutofill="no" />
+
+
+                <ImageView
+                    android:id="@+id/add"
+                    android:layout_width="@dimen/_zero"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/boderwhite"
+                    android:backgroundTint="@color/green"
+                    android:src="@drawable/baseline_add_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/edtAmong"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/sos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sos"
+                android:textColor="#E91E63"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/among" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/addToCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_To_Cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        tools:ignore="TextContrastCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>

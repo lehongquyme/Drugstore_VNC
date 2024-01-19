@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    tools:context="com.example.drugstore_vnc.FlashActivity">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="@dimen/_zero"
+    android:id="@+id/cardImageFlash"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintDimensionRatio="1:1"
+    app:layout_constraintTop_toTopOf="parent"
+    app:cardCornerRadius="@dimen/fifty"
+    android:layout_height="@dimen/one_Hundred">
+    <ImageView
+        android:layout_width="match_parent"
+    app:layout_constraintCircleRadius="@dimen/_ten"
+    android:layout_height="match_parent"
+    android:src="@drawable/flashimage"
+   />
+</androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

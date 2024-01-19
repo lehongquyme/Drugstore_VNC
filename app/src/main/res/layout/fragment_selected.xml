@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.home.SelectedFragment">
+    <data>
+        <!-- Example: Declare a variable with the name "viewModel" -->
+        <variable
+            name="viewModel"
+            type="com.example.drugstore_vnc.fragment.home.SelectedFragment" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one_Hundred"
+        android:background="@drawable/boderhome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_zero"
+            android:background="@color/green"
+            android:elevation="@dimen/_ten"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="0.5"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:id="@+id/backHome"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="match_parent"
+                android:paddingVertical="@dimen/_ten"
+                android:src="@drawable/baseline_arrow_back_ios_new_24"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintWidth_percent="0.2"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/cart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twenty_FourSp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/backHome"
+                app:layout_constraintWidth_percent="0.7"
+                tools:ignore="TextContrastCheck" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="@dimen/_zero"
+                android:id="@+id/cartInFragmentHome"
+                android:layout_height="wrap_content"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_ten"
+                    android:src="@drawable/baseline_add_shopping_cart_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/alertAmongCartCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/boderamongalert"
+                    android:backgroundTint="#FF0000"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText,TextContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/searchTextInputLayout"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/_zero"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/boderwhite"
+            android:drawableEnd="@drawable/baseline_search_24"
+            android:drawableTintMode="add"
+            android:hint="@string/search"
+            android:inputType="text"
+            android:paddingHorizontal="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            tools:ignore="Autofill,TouchTargetSizeCheck,TextContrastCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSelect"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

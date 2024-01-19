@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <!-- Example: Declare a variable with the name "viewModel" -->
+        <variable
+            name="viewModel"
+            type="com.example.drugstore_vnc.fragment.home.HomeFragment" />
+
+        <!-- You can add more variables or imports as needed -->
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="ScrollViewSize">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/appBarHome"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one_Hundred"
+                app:layout_constraintHeight_percent="0.1"
+                android:background="@drawable/boderhome"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/appBarHomeSmall"
+                    android:layout_width="@dimen/_zero"
+                    android:layout_height="@dimen/_zero"
+                    android:background="@drawable/boderhome"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.5"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/hello"
+                        android:layout_width="@dimen/_zero"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/hello"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.15"
+                         />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/InforCustomer"
+                        android:layout_width="@dimen/_zero"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/hello"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/AlertCustomer"
+                        app:layout_constraintWidth_percent="0.5">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/nameAccessHome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints">
+
+                            <TextView
+                                android:id="@+id/nameHome"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_zero"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/_ten"
+                                android:text="@string/_name"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@+id/accessHome"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="MissingConstraints" />
+
+                            <TextView
+                                android:id="@+id/accessHome"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_zero"
+                                android:gravity="center"
+                                android:text="@string/accountactive"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:ignore="MissingConstraints" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <ImageView
+                            android:id="@+id/avata"
+                            android:layout_width="@dimen/_zero"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintStart_toEndOf="@+id/nameAccessHome"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/AlertCustomer"
+                        android:layout_width="@dimen/_zero"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/InforCustomer"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints">
+
+                        <ImageView
+                            android:id="@+id/language"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:src="@drawable/usa"
+                            app:layout_constraintEnd_toStartOf="@+id/alertBar"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/alertBar"
+                            app:layout_constraintEnd_toStartOf="@+id/cartInFragmentHome"
+                            android:layout_width="@dimen/_zero"
+                            android:layout_height="@dimen/_zero"
+                            android:padding="@dimen/_ten"
+                            android:src="@drawable/baseline_add_alert_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintStart_toEndOf="@+id/language"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="NotSibling" />
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="@dimen/_zero"
+                            android:id="@+id/cartInFragmentHome"
+                            android:layout_height="@dimen/_zero"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/alertBar"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:padding="@dimen/_ten"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/baseline_add_shopping_cart_24"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_width="wrap_content"
+                                android:gravity="center"
+                                android:layout_marginStart="@dimen/_two"
+                                android:id="@+id/alertAmongCart"
+                                android:layout_marginTop="@dimen/_two"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_two"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:backgroundTint="#FF0000"
+                                android:background="@drawable/boderamongalert"
+                                tools:ignore="HardcodedText" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <EditText
+                    android:id="@+id/searchTextInputLayout"
+                    android:layout_width="@dimen/_zero"
+                    android:layout_height="@dimen/_zero"
+                    android:layout_marginHorizontal="@dimen/_five"
+                    android:layout_marginVertical="@dimen/_five"
+                    android:background="@drawable/boderwhite"
+                    android:drawableEnd="@drawable/baseline_search_24"
+                    android:drawableTintMode="add"
+                    android:hint="@string/search"
+                    android:inputType="text"
+                    android:paddingHorizontal="@dimen/fifteen"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appBarHomeSmall"
+                    tools:ignore="Autofill" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/bannerHome"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="@dimen/_zero"
+                android:layout_marginHorizontal="@dimen/_five"
+                android:layout_marginVertical="@dimen/twenty"
+                app:cardCornerRadius="@dimen/_ten"
+                app:layout_constraintBottom_toTopOf="@+id/bodyHome"
+                app:layout_constraintDimensionRatio="20:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appBarHome">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="3000"
+                    app:iss_no_dots="true"
+                    app:iss_period="3000"
+                    app:iss_text_align="CENTER"
+                    tools:ignore="MissingConstraints"/>
+                <ProgressBar
+                    android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBarHome1"
+                />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bodyHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bannerHome">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/viewTotalSellingProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_five"
+                    android:layout_marginVertical="@dimen/twenty"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/viewSellingProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/selling_Products"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/twenty_FourSp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageView
+                            android:id="@+id/iconImageSellingProducts"
+                            android:layout_width="@dimen/_zero"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/twenty"
+                            android:padding="@dimen/_five"
+                            android:src="@drawable/iconviewmore"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycViewSellingProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/viewSellingProducts"
+                        tools:layout_editor_absoluteX="@dimen/_zero" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarHome2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="@+id/recycViewSellingProducts"
+                        app:layout_constraintEnd_toEndOf="@+id/recycViewSellingProducts"
+                        app:layout_constraintStart_toStartOf="@+id/recycViewSellingProducts"
+                        app:layout_constraintTop_toBottomOf="@+id/viewSellingProducts" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/viewTotalNewProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_five"
+                    android:layout_marginVertical="@dimen/twenty"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewTotalSellingProducts"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/viewNewProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_Products"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/twenty_FourSp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageView
+                            android:id="@+id/iconImageNewProducts"
+                            android:layout_width="@dimen/_zero"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/twenty"
+                            android:padding="@dimen/_five"
+                            android:src="@drawable/iconviewmore"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycViewNewProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/viewNewProducts" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarHome3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="@+id/recycViewNewProducts"
+                        app:layout_constraintEnd_toEndOf="@+id/recycViewNewProducts"
+                        app:layout_constraintStart_toStartOf="@+id/recycViewNewProducts"
+                        app:layout_constraintTop_toBottomOf="@+id/viewNewProducts" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/viewTotalPromotionalProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_five"
+                    android:layout_marginVertical="@dimen/twenty"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewTotalNewProducts"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/viewPromotionalProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/promotional_Products"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/twenty_FourSp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageView
+                            android:id="@+id/iconImagePromotionalProducts"
+                            android:layout_width="@dimen/_zero"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/twenty"
+                            android:padding="@dimen/_five"
+                            android:src="@drawable/iconviewmore"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycViewPromotionalProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/viewPromotionalProducts" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarHome4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="@+id/recycViewPromotionalProducts"
+                        app:layout_constraintEnd_toEndOf="@+id/recycViewPromotionalProducts"
+                        app:layout_constraintStart_toStartOf="@+id/recycViewPromotionalProducts"
+                        app:layout_constraintTop_toBottomOf="@+id/viewPromotionalProducts" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/viewTotalProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_five"
+                    android:layout_marginVertical="@dimen/twenty"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewTotalPromotionalProducts"
+                    tools:ignore="MissingConstraints">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/viewProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/all_Products"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/twenty_FourSp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageView
+                            android:id="@+id/iconImageProducts"
+                            android:layout_width="@dimen/_zero"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/twenty"
+                            android:padding="@dimen/_five"
+                            android:src="@drawable/iconviewmore"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycViewProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/viewProducts" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarHome5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:layout_constraintBottom_toBottomOf="@+id/recycViewProducts"
+                        app:layout_constraintEnd_toEndOf="@+id/recycViewProducts"
+                        app:layout_constraintStart_toStartOf="@+id/recycViewProducts"
+                        app:layout_constraintTop_toBottomOf="@+id/viewProducts" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

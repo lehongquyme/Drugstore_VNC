@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal="@dimen/_five"
+    android:paddingVertical="@dimen/_ten"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutPay"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_five"
+        android:background="@drawable/boderwhite"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/_ten"
+        app:layout_constraintEnd_toStartOf="@+id/amongInPay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageItemProductPay"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/one_Hundred_Twenty"
+            android:layout_margin="@dimen/_ten"
+            android:importantForAccessibility="no"
+            android:src="@drawable/iconviewmore"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/txtItemKMPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/eightSp"
+            android:layout_marginTop="@dimen/_five"
+            android:background="@drawable/boderwhite"
+            android:backgroundTint="#F30B0B"
+            android:paddingHorizontal="@dimen/fifteen"
+            android:paddingVertical="@dimen/eightSp"
+            android:text="@string/km"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/_zero"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/_five"
+            android:paddingVertical="@dimen/three"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageItemProductPay"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/nameItemProductPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/_name"
+                android:ellipsize="end"
+                android:textSize="@dimen/fifteenSp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hashTagPay"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/_five"
+                android:text="hashtag"
+                app:layout_constraintBottom_toTopOf="@+id/bonusCoinsItemProductPay"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameItemProductPay"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/bonusCoinsItemProductPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/bonus_Coins"
+                android:textColor="#FF9E16"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hashTagPay"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/packingItemProductPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/packing"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bonusCoinsItemProductPay"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/priceItemProductPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/price_Item_Product"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/packingItemProductPay"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/sellPriceItemProductPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/sell_Price_Item_Product"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceItemProductPay"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/amongMinItemProductPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/amongmin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sellPriceItemProductPay"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/amongMaxItemProductPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@string/amongmax"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/amongMinItemProductPay"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/amongInPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x100"
+        android:layout_marginHorizontal="@dimen/_ten"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayoutPay"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

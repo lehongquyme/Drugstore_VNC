@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.home.ListCartFragment">
+    <data>
+        <!-- Example: Declare a variable with the name "viewModel" -->
+        <variable
+            name="viewModel"
+            type="com.example.drugstore_vnc.fragment.home.ListCartFragment" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:elevation="@dimen/_ten"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/backHome"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/_five"
+            android:src="@drawable/baseline_arrow_back_ios_new_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.2"
+            tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/cart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twentySp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/backHome"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.78"
+            tools:ignore="TextContrastCheck" />
+
+        <CheckBox
+            android:id="@+id/checkboxAll"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+<RelativeLayout
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    app:layout_constraintBottom_toTopOf="@+id/cardTotal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+    android:layout_height="0dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSelect"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imgAlertNote"
+        android:layout_width="wrap_content"
+        android:layout_alignBottom="@+id/recyclerViewSelect"
+        android:layout_marginBottom="@dimen/_ten"
+        android:layout_marginStart="@dimen/_ten"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_assignment_late_24"
+        tools:ignore="ContentDescription" />
+
+
+</RelativeLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardTotal"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boderconstrain"
+        android:backgroundTint="#FCFCBE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingHorizontal="@dimen/_five"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_ten"
+            android:layout_marginTop="@dimen/twenty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/totalProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_Number_Of_Products"
+                android:textSize="@dimen/fifteenSp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/totalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_ten"
+                android:text="@string/total_Price_Of_All_Products"
+                android:textSize="@dimen/fifteenSp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalProduct" />
+
+            <TextView
+                android:id="@+id/totalOrders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_ten"
+                android:text="@string/total_Number_Of_Orders"
+                android:textSize="@dimen/fifteenSp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalPrice" />
+
+
+            <TextView
+                android:id="@+id/amongTotalProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#FF0000"
+                android:textSize="@dimen/fifteenSp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/priceAmongTotalProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_ten"
+                android:text="0"
+                android:textColor="@color/green"
+                android:textSize="@dimen/fifteenSp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/amongTotalProduct"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/priceAmongTotalOders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_ten"
+                android:text="0"
+                android:textColor="#00BCD4"
+                android:textSize="@dimen/fifteenSp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceAmongTotalProduct"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btnToPay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_five"
+            android:text="@string/continue_Pay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutTotal"
+            tools:ignore="TextContrastCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

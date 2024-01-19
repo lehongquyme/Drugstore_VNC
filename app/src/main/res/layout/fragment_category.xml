@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ContentDescription,HardcodedText,MissingConstraints,SpUsage,TextSizeCheck"
+    tools:context=".fragment.category.CategoryFragment">
+
+    <ProgressBar
+        android:id="@+id/progressBarcategory"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarHome" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBarHome"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one_Hundred"
+        android:background="@drawable/boderhome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appBarHomeSmall"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/_zero"
+            android:background="@drawable/boderhome"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgCartInCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/baseline_shopping_cart_24"
+                    android:backgroundTint="#FFEB3B"
+                    android:backgroundTintMode="multiply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/titleCategory"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/titleCategory"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/twenty"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/category"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imgCartInCategory"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/searchTextInputLayout"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/_zero"
+            android:layout_marginHorizontal="@dimen/_five"
+            android:layout_marginVertical="@dimen/_five"
+            android:background="@drawable/boderwhite"
+            android:drawableEnd="@drawable/baseline_search_24"
+            android:drawableTintMode="add"
+            android:hint="@string/search"
+            android:inputType="text"
+            android:paddingHorizontal="@dimen/fifteen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarHomeSmall"
+            tools:ignore="Autofill,TouchTargetSizeCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCategory"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/one_Hundred"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarHome" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

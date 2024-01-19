@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/boderwhite"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/_five"
+    android:elevation="@dimen/_ten"
+    android:padding="@dimen/_five"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewHashTag"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <ImageView
+            android:id="@+id/imageItemProduct"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/one_Hundred_Fifty"
+            android:src="@drawable/iconviewmore"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+        <TextView
+            android:layout_marginStart="@dimen/_ten"
+            android:layout_marginTop="@dimen/_ten"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/txtItemKM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/fifteen"
+            android:paddingVertical="@dimen/_five"
+            android:textColor="@color/white"
+            android:backgroundTint="#F30B0B"
+            android:background="@drawable/boderwhite"
+            android:textStyle="bold"
+            android:text="KM"
+            tools:ignore="HardcodedText,MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerViewHashTag"
+    android:layout_width="@dimen/_zero"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/appBar"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/nameItemProduct"
+    android:layout_height="wrap_content">
+</androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <TextView
+        android:id="@+id/nameItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textStyle="bold"
+        android:textSize="@dimen/fifteenSp"
+        android:ellipsize="end"
+        android:text="@string/_name"
+        app:layout_constraintBottom_toTopOf="@+id/bonusCoinsItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHashTag"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/bonusCoinsItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#FF9E16"
+        android:maxLines="2"
+        android:text="@string/bonus_Coins"
+        app:layout_constraintTop_toBottomOf="@+id/nameItemProduct"
+        app:layout_constraintBottom_toTopOf="@+id/packingItemProduct"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/packingItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        app:layout_constraintBottom_toTopOf="@+id/priceItemProduct"
+        android:text="@string/packing"
+        app:layout_constraintTop_toBottomOf="@+id/bonusCoinsItemProduct"
+        tools:ignore="MissingConstraints"
+      />
+    <TextView
+        android:id="@+id/priceItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        android:maxLines="2"
+        android:text="@string/price_Item_Product"
+        app:layout_constraintBottom_toTopOf="@+id/sellPriceItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/packingItemProduct"
+        tools:ignore="MissingConstraints"
+      />
+
+    <TextView
+        android:id="@+id/sellPriceItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/green"
+        android:maxLines="2"
+        android:text="@string/sell_Price_Item_Product"
+        app:layout_constraintBottom_toTopOf="@+id/amongMaxItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/priceItemProduct"
+        tools:ignore="MissingConstraints"
+    />
+    <TextView
+        android:id="@+id/amongMaxItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/amongmax"
+        app:layout_constraintBottom_toTopOf="@+id/amongMinItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/sellPriceItemProduct"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/amongMinItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        app:layout_constraintBottom_toTopOf="@+id/endProduct"
+        android:text="@string/amongmin"
+        app:layout_constraintTop_toBottomOf="@+id/amongMaxItemProduct"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/endProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boderwhite"
+        android:backgroundTint="#FFC107"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:padding="@dimen/_five"
+        android:textColor="#FF0000"
+        android:text="@string/hashtag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amongMinItemProduct"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddToCart"
+        />
+
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_To_Cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+      />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:elevation="@dimen/_ten"
+    android:id="@+id/linearLayoutNews"
+    android:layout_margin="@dimen/_five"
+    android:background="@drawable/boderwhite"
+    android:padding="@dimen/_five"
+    android:layout_height="wrap_content">
+<TextView
+    android:id="@+id/dateNewsGeneral"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/date"
+    tools:ignore="HardcodedText" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/_five"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_margin="@dimen/_five"
+            android:id="@+id/imageNewsGeneral"
+            android:layout_width="@dimen/seventies"
+            android:layout_height="@dimen/_zero"
+            android:src="@drawable/flashimage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/_five"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="@dimen/_zero"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageNewsGeneral"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <TextView
+                android:id="@+id/titleNewsGeneral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/tittle"
+                android:textColor="@color/green"
+                android:textSize="@dimen/fifteenSp"
+                tools:ignore="TextContrastCheck" />
+            <TextView
+                android:text="@string/content"
+                android:id="@+id/contentNewsGeneral"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

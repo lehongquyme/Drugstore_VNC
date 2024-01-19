@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.manager.ManageFragment">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="@dimen/_five"
+        android:layout_width="match_parent"
+        android:id="@+id/constraintLayoutInfor"
+        android:background="@drawable/bodersignup"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/inforCustomer"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/_zero"
+            android:layout_margin="@dimen/_ten"
+            android:src="@drawable/baseline_engineering_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <TextView
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_ten"
+            android:text="@string/my_Infor"
+            android:textColor="@color/green"
+            android:textSize="@dimen/twentySp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/inforCustomer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="@dimen/_five"
+        android:layout_width="match_parent"
+        android:id="@+id/constraintLayoutManagerShop"
+        android:background="@drawable/bodersignup"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/managerShopCustomer"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/_zero"
+            android:layout_margin="@dimen/_ten"
+            android:src="@drawable/baseline_store_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+        <TextView
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_ten"
+            android:text="@string/manager_Shop"
+            android:textColor="#43A047"
+            android:textSize="@dimen/twentySp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/managerShopCustomer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/constraintLayoutSupport"
+        android:layout_margin="@dimen/_five"
+        android:background="@drawable/bodersignup"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/supportCustomer"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/_zero"
+            android:layout_margin="@dimen/_ten"
+            android:src="@drawable/baseline_support_agent_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <TextView
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_ten"
+            android:text="@string/support"
+            android:textColor="#43A047"
+            android:textSize="@dimen/twentySp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/supportCustomer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/constraintLayoutNews"
+        android:layout_margin="@dimen/_five"
+        android:background="@drawable/bodersignup"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/newsCustomer"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/_zero"
+            android:layout_margin="@dimen/_ten"
+            android:src="@drawable/news24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+        <TextView
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_ten"
+            android:text="@string/news"
+            android:textColor="@color/green"
+            android:textSize="@dimen/twentySp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/newsCustomer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_margin="@dimen/_five"
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayoutAbout"
+            android:background="@drawable/bodersignup"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/introduceCustomer"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/_zero"
+                android:layout_margin="@dimen/_ten"
+                android:src="@drawable/baseline_assignment_late_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+            <TextView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_ten"
+                android:text="@string/introduce"
+                android:textSize="@dimen/twentySp"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/introduceCustomer"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_margin="@dimen/_five"
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayOuttermsOfUse"
+            android:background="@drawable/bodersignup"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/outtermsOfUseCustomer"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/_zero"
+                android:layout_margin="@dimen/_ten"
+                android:src="@drawable/baseline_photo_filter_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+            <TextView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_ten"
+                android:text="@string/outterms_Of_Use"
+                android:textColor="#43A047"
+                android:textSize="@dimen/twentySp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/outtermsOfUseCustomer"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayoutPrivacyPolicy"
+            android:layout_margin="@dimen/_five"
+            android:background="@drawable/bodersignup"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/privacyPolicyCustomer"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/_zero"
+                android:layout_margin="@dimen/_ten"
+                android:src="@drawable/defender24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <TextView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_ten"
+                android:text="@string/privacy_Policy"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                android:textSize="@dimen/twentySp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/privacyPolicyCustomer"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayoutShoppingGuide"
+            android:layout_margin="@dimen/_five"
+            android:background="@drawable/bodersignup"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ShoppingGuideCustomer"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/_zero"
+                android:layout_margin="@dimen/_ten"
+                android:src="@drawable/baseline_shopping_cart_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <TextView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_ten"
+                android:text="@string/shopping_Guide"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                android:textSize="@dimen/twentySp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ShoppingGuideCustomer"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_margin="@dimen/_five"
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayoutPaymentPolicy"
+            android:background="@drawable/bodersignup"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/paymentPolicyCustomer"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/_zero"
+                android:layout_margin="@dimen/_ten"
+                android:src="@drawable/payment24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <TextView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_ten"
+                android:text="@string/payment_Policy"
+                android:textSize="@dimen/twentySp"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/paymentPolicyCustomer"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayoutDeliveryPolicy"
+            android:layout_margin="@dimen/_five"
+            android:background="@drawable/bodersignup"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/deliveryPolicyCustomer"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/_zero"
+                android:layout_margin="@dimen/_ten"
+                android:src="@drawable/baseline_car_rental_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+            <TextView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_ten"
+                android:textSize="@dimen/twentySp"
+                android:text="@string/delivery_Policy"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/deliveryPolicyCustomer"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_margin="@dimen/_five"
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayoutReturnPolicy"
+            android:background="@drawable/bodersignup"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/returnPolicyCustomer"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/_zero"
+                android:layout_margin="@dimen/_ten"
+                android:src="@drawable/load24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+            <TextView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_ten"
+                android:textSize="@dimen/twentySp"
+                android:text="@string/return_Policy"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/returnPolicyCustomer"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="@dimen/_five"
+        android:layout_width="match_parent"
+        android:id="@+id/constraintLayoutManagerWarrantyPolicy"
+        android:background="@drawable/bodersignup"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/warrantyPolicyCustomer"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/_zero"
+            android:layout_margin="@dimen/_ten"
+            android:src="@drawable/exchange24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_ten"
+            android:textSize="@dimen/twentySp"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/marranty_Policy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/warrantyPolicyCustomer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/constraintLayoutInspectionPolicy"
+        android:layout_margin="@dimen/_five"
+        android:background="@drawable/bodersignup"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/inspectionPolicyCustomer"
+            android:layout_width="@dimen/forty"
+            android:layout_height="@dimen/_zero"
+            android:layout_margin="@dimen/_ten"
+            android:src="@drawable/cartspection24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_ten"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            android:textSize="@dimen/twentySp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/inspection_Policy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/inspectionPolicyCustomer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_margin="@dimen/_five"
+            android:layout_width="match_parent"
+            android:id="@+id/constraintLayoutDuty"
+            android:background="@drawable/bodersignup"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/dutyCustomer"
+                android:layout_width="@dimen/forty"
+                android:layout_height="@dimen/_zero"
+                android:layout_margin="@dimen/_ten"
+                android:src="@drawable/account24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="@dimen/_zero"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_ten"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/obligations"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dutyCustomer"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>

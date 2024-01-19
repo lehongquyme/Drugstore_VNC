@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".fragment.manager.ContactFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@id/consraintAppBar"
+    android:layout_width="match_parent"
+    android:background="@color/green"
+    app:layout_constraintTop_toTopOf="parent"
+    android:elevation="@dimen/_ten"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <ImageView
+        android:id="@+id/backManagerFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_zero"
+        android:layout_margin="@dimen/_five"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="2:3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contact"
+        app:layout_constraintStart_toEndOf="@+id/backManagerFragment"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/thirty"
+        android:textSize="@dimen/twentySp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+<LinearLayout
+    android:id="@+id/linearLayoutContact"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/constraintFaceBook"
+    android:layout_width="match_parent"
+    android:background="@drawable/boderwhite"
+    android:layout_margin="@dimen/_ten"
+    android:padding="@dimen/_five"
+    android:elevation="@dimen/_ten"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImageFaceBook"
+        android:layout_width="@dimen/eighty"
+        android:layout_height="@dimen/_zero"
+        app:cardCornerRadius="@dimen/fifty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageFaceBook"
+            android:layout_width="95dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/flashimage" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textFaceBook"
+        android:gravity="center_vertical"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/_ten"
+        android:textSize="@dimen/twenty_FourSp"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="@dimen/_zero"
+        android:text="@string/facebook"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardImageFaceBook"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:id="@+id/constraintZalo"
+    android:background="@drawable/boderwhite"
+    android:layout_margin="@dimen/_ten"
+    android:padding="@dimen/_five"
+    android:elevation="@dimen/_ten"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImageZalo"
+        android:layout_width="@dimen/eighty"
+        android:layout_height="@dimen/_zero"
+        app:cardCornerRadius="@dimen/fifty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent">
+<ImageView
+    android:id="@+id/imageZalo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/flashimage"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:gravity="center_vertical"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:id="@+id/textZalo"
+        android:layout_marginStart="@dimen/_ten"
+        android:textSize="@dimen/twenty_FourSp"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="@dimen/_zero"
+        android:text="@string/zalo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardImageZalo"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+        android:id="@+id/constraintPhone"
+        android:background="@drawable/boderwhite"
+        android:layout_margin="@dimen/_ten"
+        android:padding="@dimen/_five"
+        android:elevation="@dimen/_ten"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImagePhone"
+        android:layout_width="@dimen/eighty"
+        android:layout_height="@dimen/_zero"
+        app:cardCornerRadius="@dimen/fifty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/imagePhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/flashimage"
+            tools:ignore="ContentDescription" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textPhone"
+        android:gravity="center_vertical"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/_ten"
+        android:textSize="@dimen/twenty_FourSp"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="@dimen/_zero"
+        android:text="@string/_number_Phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardImagePhone"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+    <LinearLayout
+        android:id="@+id/linearLayoutContact1"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintFaceBook1"
+            android:layout_width="match_parent"
+            android:background="@drawable/boderwhite"
+            android:layout_margin="@dimen/_ten"
+            android:padding="@dimen/_five"
+            android:elevation="@dimen/_ten"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardImageFaceBook1"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="@dimen/_zero"
+                app:cardCornerRadius="@dimen/fifty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageFaceBook1"
+                    android:layout_width="95dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/flashimage" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textFaceBook1"
+                android:gravity="center_vertical"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_ten"
+                android:textSize="@dimen/twenty_FourSp"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="@dimen/_zero"
+                android:text="@string/facebook"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardImageFaceBook1"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/constraintZalo1"
+            android:background="@drawable/boderwhite"
+            android:layout_margin="@dimen/_ten"
+            android:padding="@dimen/_five"
+            android:elevation="@dimen/_ten"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardImageZalo1"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="@dimen/_zero"
+                app:cardCornerRadius="@dimen/fifty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:id="@+id/imageZalo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/flashimage"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:gravity="center_vertical"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                android:id="@+id/textZalo1"
+                android:layout_marginStart="@dimen/_ten"
+                android:textSize="@dimen/twenty_FourSp"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="@dimen/_zero"
+                android:text="@string/zalo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardImageZalo1"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:id="@+id/constraintPhone1"
+            android:background="@drawable/boderwhite"
+            android:layout_margin="@dimen/_ten"
+            android:padding="@dimen/_five"
+            android:elevation="@dimen/_ten"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardImagePhone1"
+                android:layout_width="@dimen/eighty"
+                android:layout_height="@dimen/_zero"
+                app:cardCornerRadius="@dimen/fifty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:id="@+id/imagePhone1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/flashimage"
+                    tools:ignore="ContentDescription" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textPhone1"
+                android:gravity="center_vertical"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_ten"
+                android:textSize="@dimen/twenty_FourSp"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="@dimen/_zero"
+                android:text="@string/_number_Phone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardImagePhone1"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    </LinearLayout>

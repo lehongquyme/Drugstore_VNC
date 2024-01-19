@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="fifty" tools:ignore="MissingDefaultResource">50dp</dimen>
+    <dimen name="one_Hundred">100dp</dimen>
+    <dimen name="_ten">10dp</dimen>
+    <dimen name="_zero">0dp</dimen>
+    <dimen name="forty">40dp</dimen>
+    <dimen name="twenty">20dp</dimen>
+    <dimen name="twentySp">20sp</dimen>
+    <dimen name="twenty_FourSp">24sp</dimen>
+    <dimen name="twenty_Four">24dp</dimen>
+    <dimen name="seventy_Five">75dp</dimen>
+    <dimen name="thirty">30dp</dimen>
+    <dimen name="one_Hundred_Twenty">120dp</dimen>
+    <dimen name="sixteen">16dp</dimen>
+    <dimen name="_five">5dp</dimen>
+    <dimen name="fifteen">15dp</dimen>
+    <dimen name="fifteenSp">15sp</dimen>
+    <dimen name="eighty">80dp</dimen>
+    <dimen name="_two">2dp</dimen>
+    <dimen name="two_Hundred">200dp</dimen>
+    <dimen name="three_Hundred">300dp</dimen>
+    <dimen name="eightSp">8sp</dimen>
+    <dimen name="three">3dp</dimen>
+    <dimen name="one_Hundred_Fifty">150dp</dimen>
+    <dimen name="seventies">70dp</dimen>
+</resources>

@@ -1,0 +1,65 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Drugstore_VNC" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/green</item>
+    </style>
+
+    <style name="Theme.Drugstore_VNC" parent="Base.Theme.Drugstore_VNC" />
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">#46bdbf</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">#f1f1f1
+        </item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f
+        </item>
+    </style>
+    <style name="mytoast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#61C566</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">#4CAF50</item>
+        <item name="stIconStart">@drawable/baseline_check_circle_outline_24</item>
+        <item name="stIconEnd">@drawable/star</item>
+        <item name="stLength">SHORT</item>
+        <item name="stRadius">5dp</item>
+    </style>
+    <style name="creatProduct">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#61C566</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stStrokeColor">#4CAF50</item>
+        <item name="stIconStart">@drawable/iproduct</item>
+        <item name="stIconEnd">@drawable/baseline_check_circle_outline_24</item>
+        <item name="stLength">SHORT</item>
+        <item name="stRadius">5dp</item>
+    </style>
+    <style name="failImage">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#FFFFFF</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#FF0000</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stIconStart">@drawable/baseline_info_outline_24</item>
+        <item name="stLength">SHORT</item>
+        <item name="stRadius">50dp</item>
+    </style>
+    <style name="warningVoucher">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#000000</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#F7FDF39B</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stIconStart">@drawable/baseline_new_releases_24</item>
+        <item name="stLength">SHORT</item>
+        <item name="stRadius">50dp</item>
+    </style>
+</resources>

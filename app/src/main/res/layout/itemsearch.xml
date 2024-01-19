@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="@dimen/_five"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/itemSearch"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="wrap_content"
+        android:text="@string/_name"
+        android:textStyle="bold"
+        android:paddingVertical="@dimen/_five"
+        android:paddingHorizontal="@dimen/fifteen"
+        android:textSize="@dimen/fifteenSp"
+        app:layout_constraintEnd_toStartOf="@+id/itemDiscountSearch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/itemDiscountSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_zero"
+        app:layout_constraintEnd_toStartOf="@+id/itemSellingSearch"
+        app:layout_constraintStart_toEndOf="@+id/itemSearch"
+        android:src="@drawable/baseline_discount_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/itemSellingSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_zero"
+        android:src="@drawable/baseline_photo_filter_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/itemDiscountSearch"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>
