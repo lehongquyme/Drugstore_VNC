@@ -129,6 +129,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/imageSalesHistory"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/fail_history"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewSelect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/txtSalesHistory"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageSalesHistory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

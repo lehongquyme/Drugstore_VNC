@@ -140,6 +140,8 @@
     <string name="doyouwantdeletethisorder">Bạn có muốn xoá sản phẩm này</string>
     <string name="minCheck">Giá trị chỉ có thể đạt nhỏ nhất là</string>
     <string name="donePriceListCard">Nếu bạn muốn thay đổi giá trị trong ô nhập. Vui lòng nhấn xác nhận sau khi nhập xong hoặc dấu xác nhận phía góc dưới cùng bên phải bàn phím</string>
+    <string name="loaded">"Lấy được "</string>
     <string name="checkVoucher">Có vẻ như mã giảm giá của bạn không hợp lệ vui lòng thử mã khác</string>
     <string name="warningVoucher">Có vẻ như mã giảm giá của bạn không hợp lệ vui lòng thử mã khác</string>
+    <string name="no_data">Không có dữ liệu</string>
 </resources>

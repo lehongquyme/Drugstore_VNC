@@ -11,7 +11,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +24,7 @@ import com.example.drugstore_vnc.postAPI.TakeProductInCart
 import com.example.drugstore_vnc.util.CheckToPay
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
+import io.github.muddz.styleabletoast.StyleableToast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -179,11 +179,12 @@ class SelectCategoryFragment : Fragment() {
                             val startPosition = itemList.size
                             itemList.addAll(it)
                             itemAdapter?.notifyItemRangeInserted(startPosition, it.size)
-                            Toast.makeText(
+                            StyleableToast.makeText(
                                 requireContext(),
-                                "Have load ${it.size + startPosition}",
-                                Toast.LENGTH_SHORT
+                                getString(R.string.loaded)+" ${it.size + startPosition}",
+                                R.style.loaded
                             ).show()
+
                         }
                     }
                 }

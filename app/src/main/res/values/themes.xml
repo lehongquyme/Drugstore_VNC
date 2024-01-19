@@ -62,4 +62,14 @@
         <item name="stLength">SHORT</item>
         <item name="stRadius">50dp</item>
     </style>
+    <style name="loaded">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#000000</item>
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#BFC34A</item>
+        <item name="stStrokeWidth">3dp</item>
+        <item name="stIconStart">@drawable/baseline_history_24</item>
+        <item name="stLength">@integer/material_motion_duration_short_1</item>
+        <item name="stRadius">50dp</item>
+    </style>
 </resources>

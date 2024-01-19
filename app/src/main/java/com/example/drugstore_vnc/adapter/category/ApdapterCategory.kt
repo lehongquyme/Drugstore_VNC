@@ -60,6 +60,7 @@ class ApdapterCategory(
                             holder.itemView.findNavController()
                                 .navigate(R.id.selectedFragment, bundle)
                         }
+
                     }
 
                     override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
