@@ -57,6 +57,7 @@ class SelectedFragment : Fragment() {
         super.onAttach(context)
 
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         apiService =
@@ -67,13 +68,14 @@ class SelectedFragment : Fragment() {
         )[ViewModelProductAPI::class.java]
 
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val bundle = this.arguments
         val gson = Gson()
-        CheckToPay.binding?.bottomNavigationView?.visibility  =View.GONE
+        CheckToPay.binding?.bottomNavigationView?.visibility = View.GONE
         val filter: String? = bundle?.getString("key")
         val category = arguments?.getString("CategoryProduct").toString()
         viewModel.fetchDataDemo()
@@ -99,36 +101,34 @@ class SelectedFragment : Fragment() {
             }
 
             "khuyen_mai" -> {
-                title =getString(R.string.promotional_Products)
+                title = getString(R.string.promotional_Products)
                 filterList(filter)
             }
 
             "all" -> {
-                title =getString(R.string.all_Products)
+                title = getString(R.string.all_Products)
                 filterList(filter)
             }
 
             else -> {
                 categoryGenerel = gson.fromJson(category, SelectProdductCategory::class.java)
                 listProduct = categoryGenerel.listData
-                    binding.imageSalesHistory.visibility= View.INVISIBLE
-                    binding.txtSalesHistory.visibility= View.INVISIBLE
+                binding.imageSalesHistory.visibility = View.INVISIBLE
+                binding.txtSalesHistory.visibility = View.INVISIBLE
                 title = categoryGenerel.title
                 binding.textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15.toFloat())
 
                 val spanCount = 2
-                if (listProduct.isNotEmpty()){
+                if (listProduct.isNotEmpty()) {
 
                     val layoutManager = GridLayoutManager(context, spanCount)
-                binding.recyclerViewSelect.layoutManager = layoutManager
-                val myListAdapter = ApdapterItemCategory(requireActivity())
-                myListAdapter.setList(listProduct)
-                binding.recyclerViewSelect.adapter = myListAdapter
-
-            }
-                else{
-                    binding.imageSalesHistory.visibility= View.VISIBLE
-                    binding.txtSalesHistory.visibility= View.VISIBLE
+                    binding.recyclerViewSelect.layoutManager = layoutManager
+                    val myListAdapter = ApdapterItemCategory(requireActivity())
+                    myListAdapter.setList(listProduct)
+                    binding.recyclerViewSelect.adapter = myListAdapter
+                } else {
+                    binding.imageSalesHistory.visibility = View.VISIBLE
+                    binding.txtSalesHistory.visibility = View.VISIBLE
                     Glide.with(this)
                         .asGif()
                         .load(R.drawable.fail_history) // Replace "your_gif_resource" with the actual resource ID of your GIF
@@ -179,7 +179,7 @@ class SelectedFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showDialog( item: ProductDemo?) {
+    private fun showDialog(item: ProductDemo?) {
         var amongnow: Int = 1
         val bottomSheetDialog = BottomSheetDialog(requireContext())
         val binding: DialogaddtocartBinding = DialogaddtocartBinding.inflate(layoutInflater)
@@ -216,7 +216,7 @@ class SelectedFragment : Fragment() {
 
         if (item != null) {
 
-            val itemsHashTag= item.tags.map { it.name}.toMutableList()
+            val itemsHashTag = item.tags.map { it.name }.toMutableList()
             val adapterHashTag = ApdapterHashTag(itemsHashTag)
             binding.listHashTag.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -248,11 +248,13 @@ class SelectedFragment : Fragment() {
         if (item.so_luong_toi_thieu == 0) {
             amongnow = 1
             binding.edtAmong.setText("$amongnow")
-            binding.amongMinItemProduct.text = getString(R.string.minimumquantity)+" ${item.so_luong_toi_thieu}"
+            binding.amongMinItemProduct.text =
+                getString(R.string.minimumquantity) + " ${item.so_luong_toi_thieu}"
         } else if (item.so_luong_toi_thieu > 1) {
             amongnow = item.so_luong_toi_thieu
             binding.edtAmong.setText("$amongnow")
-            binding.amongMinItemProduct.text =getString(R.string.minimumquantity)+" ${item.so_luong_toi_thieu}"
+            binding.amongMinItemProduct.text =
+                getString(R.string.minimumquantity) + " ${item.so_luong_toi_thieu}"
         } else {
 
             binding.amongMinItemProduct.visibility = View.GONE
@@ -273,7 +275,7 @@ class SelectedFragment : Fragment() {
             }
         })
         if (item.bonus_coins > 0) {
-            binding.bonusCoinsItemProduct.text = getString(R.string.bonus)+" ${item.bonus_coins}"
+            binding.bonusCoinsItemProduct.text = getString(R.string.bonus) + " ${item.bonus_coins}"
         } else {
             binding.bonusCoinsItemProduct.visibility = View.GONE
         }
@@ -314,11 +316,17 @@ class SelectedFragment : Fragment() {
             CallAPI().callRetrofitPostCart(call, object : CallAPI.AuthCallbackAddToCard {
                 override fun onAddToCart(check: Int) {
                     if (check > 0) {
-                        Toast.makeText(requireContext(), getString(R.string.addFail), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.addFail),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
-                        StyleableToast.makeText(requireContext(),
+                        StyleableToast.makeText(
+                            requireContext(),
                             getString(R.string.addProduct),
-                            R.style.creatProduct).show()
+                            R.style.creatProduct
+                        ).show()
                         viewModel.fetchDataDemo()
                         bottomSheetDialog.dismiss()
                     }
@@ -331,6 +339,7 @@ class SelectedFragment : Fragment() {
 
         bottomSheetDialog.show()
     }
+
     @SuppressLint("SetTextI18n")
     private fun alertAmong(among: Int) {
 

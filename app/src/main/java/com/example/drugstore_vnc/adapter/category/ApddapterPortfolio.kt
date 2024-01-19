@@ -52,9 +52,9 @@ class ApddapterPortfolio(
             }
         }
         when (item.key) {
-            "hoat_chat" -> holder.title.text = "Active"
-            "nhom_thuoc" -> holder.title.text = "Drug Group"
-            "nha_san_xuat" -> holder.title.text = "Producer"
+            "hoat_chat" -> holder.title.text =context.getString(R.string.active)
+            "nhom_thuoc" -> holder.title.text =context.getString(R.string.drugGroup)
+            "nha_san_xuat" -> holder.title.text =context.getString(R.string.producer)
         }
         val listCategory = item.category
         val categoryAdapter = ApdapterCategory(context, listCategory, item.key)

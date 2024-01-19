@@ -82,7 +82,7 @@
             android:layout_width="@dimen/_zero"
             android:layout_height="@dimen/_zero"
             android:layout_marginHorizontal="@dimen/fifteen"
-            android:layout_marginVertical="@dimen/fifteen"
+            android:layout_marginVertical="@dimen/_five"
             android:background="@drawable/boderwhite"
             android:drawableEnd="@drawable/baseline_close_24"
             android:drawableTintMode="add"

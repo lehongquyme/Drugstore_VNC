@@ -77,7 +77,7 @@ class SelectCategoryFragment : Fragment() {
         progressBar = view.findViewById(R.id.progressBarSelect)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         if (search.text.length < 2) {
-            itemAdapter = ApdapterLoading(itemList)
+            itemAdapter = ApdapterLoading(itemList,requireContext(),objectFromJson.description)
             recyclerView.adapter = itemAdapter
             loadItems()
 
@@ -112,7 +112,7 @@ class SelectCategoryFragment : Fragment() {
 
                             if (response.isSuccessful) {
                                 val newItems = response.body()?.response?.data
-                                itemAdapter = ApdapterLoading(newItems)
+                                itemAdapter = ApdapterLoading(newItems,requireContext(),objectFromJson.description)
                                 recyclerView.adapter = itemAdapter
                             }
                         }
