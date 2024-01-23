@@ -21,13 +21,13 @@ class ManageFragment : Fragment() {
         CheckToPay.binding?.bottomNavigationView?.visibility  =View.VISIBLE
         binding = FragmentManageBinding.inflate(inflater, container, false)
         binding.constraintLayoutInfor.setOnClickListener {
-            Navigation.findNavController(requireView()).navigate(R.id.infoManagerFragment);
+            Navigation.findNavController(requireView()).navigate(R.id.infoManagerFragment)
         }
         binding.constraintLayoutSupport.setOnClickListener {
-            Navigation.findNavController(requireView()).navigate(R.id.contactFragment);
+            Navigation.findNavController(requireView()).navigate(R.id.contactFragment)
         }
         binding.constraintLayoutNews.setOnClickListener {
-            Navigation.findNavController(requireView()).navigate(R.id.newsFragment);
+            Navigation.findNavController(requireView()).navigate(R.id.newsFragment)
         }
 
         binding.constraintLayoutAbout.setOnClickListener {
@@ -94,6 +94,9 @@ class ManageFragment : Fragment() {
                 val bundle = bundleOf("URL" to "$link/10")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
            
+        }
+        binding.constraintLayoutManagerShop.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.managerShopFragment)
         }
 
 

@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_manageFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_manageFragment_to_managerShopFragment"
+            app:destination="@id/managerShopFragment" />
     </fragment>
     <fragment
         android:id="@+id/listCartFragment"
@@ -126,6 +129,10 @@
         android:name="com.example.drugstore_vnc.fragment.manager.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/managerShopFragment"
+        android:name="com.example.drugstore_vnc.fragment.manager.ManagerShopFragment"
+        android:label="ManagerShopFragment" />
 
 
 </navigation>

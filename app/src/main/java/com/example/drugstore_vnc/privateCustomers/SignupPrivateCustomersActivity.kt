@@ -35,7 +35,7 @@ class SignupPrivateCustomersActivity : AppCompatActivity() {
     private var uriPart: String? = ""
     private var idprovince = listOf<Int>()
     private var idDrugstore = listOf<Int>()
-    var checkImage = false
+    private var checkImage = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {

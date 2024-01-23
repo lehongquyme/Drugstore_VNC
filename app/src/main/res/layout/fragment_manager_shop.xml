@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <!-- Example: Declare a variable with the name "viewModel" -->
+        <variable
+            name="viewModel"
+            type="com.example.drugstore_vnc.fragment.manager.ManagerShopFragment" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_Hundred"
+            android:background="@drawable/boderhome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_zero"
+                android:background="@color/green"
+                android:elevation="@dimen/_ten"
+                android:orientation="horizontal"
+                app:layout_constraintHeight_percent="0.45"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/backHomeMangerShop"
+                    android:layout_width="@dimen/_zero"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="@dimen/_ten"
+                    android:src="@drawable/baseline_arrow_back_ios_new_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.2"
+                    tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/textViewMangerShop"
+                    android:layout_width="@dimen/_zero"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/phamarcy"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/twenty_FourSp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/backHomeMangerShop"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.7"
+                    tools:ignore="TextContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                android:id="@+id/searchTextInputLayout"
+                android:layout_width="@dimen/_zero"
+                android:layout_height="@dimen/_zero"
+                android:layout_marginHorizontal="@dimen/eightSp"
+                android:layout_marginVertical="@dimen/eightSp"
+                android:background="@drawable/boderwhite"
+                android:drawableEnd="@drawable/baseline_search_24"
+                android:drawableTintMode="add"
+                android:hint="@string/search"
+                android:inputType="text"
+                android:paddingHorizontal="@dimen/fifteen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+                tools:ignore="Autofill,TouchTargetSizeCheck,TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewSelectMangerShop"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_zero"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTypeProduct"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="UselessLeaf">
+<LinearLayout
+    android:layout_margin="@dimen/_ten"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_ten"
+    android:id="@+id/selling"
+    android:background="@drawable/boderwhite"
+    android:gravity="center"
+    android:backgroundTint="@color/green"
+    android:layout_height="wrap_content"
+    tools:ignore="UselessParent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/selling"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selling"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fifteen"
+        android:textStyle="bold"
+        tools:ignore="SpUsage,TextSizeCheck,TextContrastCheck" />
+</LinearLayout>
+<LinearLayout
+    android:id="@+id/promotion"
+    android:layout_margin="@dimen/_ten"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_ten"
+    android:background="@drawable/boderwhite"
+    android:gravity="center"
+    android:backgroundTint="@color/red"
+    android:layout_height="wrap_content"
+    tools:ignore="UselessParent">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/discount_icon"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/promotion"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fifteen"
+        android:textStyle="bold"
+        tools:ignore="SpUsage,TextSizeCheck" />
+</LinearLayout>
+<LinearLayout
+    android:layout_margin="@dimen/_ten"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_ten"
+    android:id="@+id/all"
+    android:background="@drawable/boderwhite"
+    android:gravity="center"
+    android:backgroundTint="@color/blue"
+    android:layout_height="wrap_content"
+    tools:ignore="UselessParent">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/all"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/all_Products"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fifteen"
+        android:textStyle="bold"
+        tools:ignore="SpUsage,TextSizeCheck" />
+</LinearLayout>
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBarMangerShop"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/recyclerViewSelectMangerShop" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

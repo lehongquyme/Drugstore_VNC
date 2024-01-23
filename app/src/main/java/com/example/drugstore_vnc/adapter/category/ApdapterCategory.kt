@@ -23,9 +23,12 @@ class ApdapterCategory(
     private val context: Context,
     private val items: List<Category>,
     private val key: String,
-
-    ) : RecyclerView.Adapter<ApdapterCategory.ViewHolder>() {
+    private val agency: Int
+) : RecyclerView.Adapter<ApdapterCategory.ViewHolder>() {
     private lateinit var apiServiceCart: TakeProductInCart
+    private var hc: Int? = null
+    private var nt: Int? = null
+    private var nsx: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -40,32 +43,45 @@ class ApdapterCategory(
         val retrofit = ClientAPI.getClientProduct(context)
         apiServiceCart = retrofit.create(TakeProductInCart::class.java)
         holder.textTitle.text = category.name
-        holder.textTitle.setOnClickListener {
-            apiServiceCart.fetchTakeItemCategory(drugGroupMap, 1)
-                .enqueue(object : Callback<CategoryItemProduct> {
-                    override fun onResponse(
-                        call: Call<CategoryItemProduct>,
-                        response: Response<CategoryItemProduct>
-                    ) {
-                        if (response.isSuccessful) {
-                            val gson = Gson()
-                            val jsonString = gson.toJson(
-                                SelectProdductCategory(
-                                    category.name,
-                                    response.body()?.response?.data!!
-                                )
-                            )
 
-                            val bundle = bundleOf("CategoryProduct" to jsonString)
-                            holder.itemView.findNavController()
-                                .navigate(R.id.selectedFragment, bundle)
+        holder.textTitle.setOnClickListener {
+            if (agency == 1) {
+
+                when (key) {
+                    "hoat_chat" -> hc = category.value
+                    "nhom_thuoc" -> nt = category.value
+                    "nha_san_xuat" -> nsx = category.value
+                }
+                val bundle = bundleOf("ItemAgencyProduct" to category.name , "hc" to hc,"nt" to nt,"nsx" to nsx)
+                holder.itemView.findNavController()
+                    .navigate(R.id.selectedFragment, bundle)
+            } else {
+                apiServiceCart.fetchTakeItemCategory(drugGroupMap, 1)
+                    .enqueue(object : Callback<CategoryItemProduct> {
+                        override fun onResponse(
+                            call: Call<CategoryItemProduct>,
+                            response: Response<CategoryItemProduct>
+                        ) {
+                            if (response.isSuccessful) {
+                                val gson = Gson()
+                                val jsonString = gson.toJson(
+                                    SelectProdductCategory(
+                                        category.name,
+                                        response.body()?.response?.data!!
+                                    )
+                                )
+
+                                val bundle = bundleOf("CategoryProduct" to jsonString)
+                                holder.itemView.findNavController()
+                                    .navigate(R.id.selectedFragment, bundle)
+                            }
+
                         }
 
-                    }
-
-                    override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
-                    }
-                })
+                        override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
+                        }
+                    })
+            }
         }
     }
 

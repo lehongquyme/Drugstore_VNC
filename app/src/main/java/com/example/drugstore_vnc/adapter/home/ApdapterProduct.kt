@@ -86,7 +86,7 @@ class ApdapterProduct(private val context: Context) :
         if (item.so_luong == 0) {
             holder.endProduct.visibility = View.VISIBLE
             holder.btnAdd.backgroundTintList = ColorStateList.valueOf(Color.GRAY)
-            holder.endProduct.text = "Out Of Stock"
+            holder.endProduct.text = context.getString(R.string.outStock)
             holder.price.visibility = View.GONE
             holder.sellPrice.visibility = View.GONE
         }

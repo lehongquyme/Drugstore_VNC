@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.home.SelectedFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
         <!-- Example: Declare a variable with the name "viewModel" -->
         <variable
             name="viewModel"
             type="com.example.drugstore_vnc.fragment.home.SelectedFragment" />
 
+        <!-- You can add more variables or imports as needed -->
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
   >
@@ -32,7 +35,7 @@
             android:background="@color/green"
             android:elevation="@dimen/_ten"
             android:orientation="horizontal"
-            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHeight_percent="0.45"
             tools:ignore="MissingConstraints">
 
             <ImageView
@@ -96,6 +99,30 @@
                     tools:ignore="HardcodedText,TextContrastCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="@dimen/_zero"
+                android:id="@+id/cartIn"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_ten"
+                    android:src="@drawable/icons8_add"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,ImageContrastCheck,ImageContrastCheck" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -103,14 +130,14 @@
             android:id="@+id/searchTextInputLayout"
             android:layout_width="@dimen/_zero"
             android:layout_height="@dimen/_zero"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="@dimen/eightSp"
+            android:layout_marginVertical="@dimen/eightSp"
             android:background="@drawable/boderwhite"
             android:drawableEnd="@drawable/baseline_search_24"
             android:drawableTintMode="add"
             android:hint="@string/search"
             android:inputType="text"
-            android:paddingHorizontal="15dp"
+            android:paddingHorizontal="@dimen/fifteen"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

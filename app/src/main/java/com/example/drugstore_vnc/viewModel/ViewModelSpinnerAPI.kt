@@ -10,10 +10,10 @@ import com.example.drugstore_vnc.fragment.manager.model.contact.ResponseContact
 import com.example.drugstore_vnc.fragment.manager.model.infor.ResponseProfile
 import com.example.drugstore_vnc.fragment.manager.model.news.ResponseNews
 import com.example.drugstore_vnc.getAPI.SpinnerProvinceAPI
-import com.example.drugstore_vnc.pharmacyCounters.model.Drugstore
-import com.example.drugstore_vnc.pharmacyCounters.model.Province
 import com.example.drugstore_vnc.model.pay.ResponsePay
 import com.example.drugstore_vnc.model.portfolio.ResponseCategory
+import com.example.drugstore_vnc.pharmacyCounters.model.Drugstore
+import com.example.drugstore_vnc.pharmacyCounters.model.Province
 import kotlinx.coroutines.launch
 
 class ViewModelSpinnerAPI() : ViewModel() {
@@ -86,6 +86,19 @@ class ViewModelSpinnerAPI() : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = api.fetchTakeCategory()
+                _category.value = response.response
+
+            } catch (e: Exception) {
+                // Handle errors
+                Log.e("ProvinceViewModel", "Error fetching provinces: ${e.message}")
+            }
+        }
+    }
+    fun fetchManagerShop() {
+
+        viewModelScope.launch {
+            try {
+                val response = api.fetchTakeManagerShop()
                 _category.value = response.response
 
             } catch (e: Exception) {

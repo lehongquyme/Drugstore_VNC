@@ -1,7 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.drugstore_vnc.fragment.home
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
@@ -30,6 +31,7 @@ import com.example.drugstore_vnc.client.ClientAPI
 import com.example.drugstore_vnc.databinding.DialogaddtocartBinding
 import com.example.drugstore_vnc.databinding.FragmentSelectedBinding
 import com.example.drugstore_vnc.model.home.ProductDemo
+import com.example.drugstore_vnc.model.portfolio.item.CategoryItemProduct
 import com.example.drugstore_vnc.model.portfolio.item.DataCategory
 import com.example.drugstore_vnc.model.portfolio.item.SelectProdductCategory
 import com.example.drugstore_vnc.postAPI.TakeProductInCart
@@ -41,10 +43,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import io.github.muddz.styleabletoast.StyleableToast
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SelectedFragment : Fragment() {
     private lateinit var binding: FragmentSelectedBinding
@@ -53,11 +59,11 @@ class SelectedFragment : Fragment() {
     private lateinit var listProduct: List<DataCategory>
     private lateinit var title: String
     private lateinit var apiService: TakeProductInCart
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-    }
-
+    private lateinit var gson: Gson
+    private lateinit var apiServiceCart: TakeProductInCart
+    private var hc: Int? = null
+    private var nt: Int? = null
+    private var nsx: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         apiService =
@@ -66,18 +72,23 @@ class SelectedFragment : Fragment() {
             this,
             ViewModelFactory(requireContext())
         )[ViewModelProductAPI::class.java]
-
+        gson = Gson()
+        val retrofit = ClientAPI.getClientProduct(requireContext())
+        apiServiceCart = retrofit.create(TakeProductInCart::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val bundle = this.arguments
-        val gson = Gson()
         CheckToPay.binding?.bottomNavigationView?.visibility = View.GONE
-        val filter: String? = bundle?.getString("key")
-        val category = arguments?.getString("CategoryProduct").toString()
+        val filter: String? = arguments?.getString("key")
+        val category: String? = arguments?.getString("category")
+        val categoryProduct = arguments?.getString("CategoryProduct").toString()
+        val agency = arguments?.getString("ItemAgencyProduct").toString()
+        hc = arguments?.getInt("hc")
+        nt = arguments?.getInt("nt")
+        nsx = arguments?.getInt("nsx")
         viewModel.fetchDataDemo()
         viewModel.responseDataDemo.observe(viewLifecycleOwner) { products ->
             products.response.let {
@@ -88,7 +99,25 @@ class SelectedFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_selected, container, false
         )
+        when(category){
 
+            "ban_chay" -> {
+                title = getString(R.string.selling_Products)
+                setupUIManagerShop(category)
+            }
+
+
+
+            "khuyen_mai" -> {
+                title = getString(R.string.promotional_Products)
+                setupUIManagerShop(category)
+            }
+
+            "all" -> {
+                title = getString(R.string.all_Products)
+                setupUIManagerShop(category)
+            }
+        }
         when (filter) {
             "ban_chay" -> {
                 title = getString(R.string.selling_Products)
@@ -109,41 +138,14 @@ class SelectedFragment : Fragment() {
                 title = getString(R.string.all_Products)
                 filterList(filter)
             }
-
-            else -> {
-                categoryGenerel = gson.fromJson(category, SelectProdductCategory::class.java)
-                listProduct = categoryGenerel.listData
-                binding.imageSalesHistory.visibility = View.INVISIBLE
-                binding.txtSalesHistory.visibility = View.INVISIBLE
-                title = categoryGenerel.title
-                binding.textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15.toFloat())
-
-                val spanCount = 2
-                if (listProduct.isNotEmpty()) {
-
-                    val layoutManager = GridLayoutManager(context, spanCount)
-                    binding.recyclerViewSelect.layoutManager = layoutManager
-                    val myListAdapter = ApdapterItemCategory(requireActivity())
-                    myListAdapter.setList(listProduct)
-                    binding.recyclerViewSelect.adapter = myListAdapter
-                } else {
-                    binding.imageSalesHistory.visibility = View.VISIBLE
-                    binding.txtSalesHistory.visibility = View.VISIBLE
-                    Glide.with(this)
-                        .asGif()
-                        .load(R.drawable.fail_history) // Replace "your_gif_resource" with the actual resource ID of your GIF
-                        .into(binding.imageSalesHistory)
-                }
-            }
-
         }
-
+            setupUI(agency, true)
+            setupUI(categoryProduct,false)
 
         binding.textView.text = title
         binding.backHome.setOnClickListener {
             val fragmentManager = requireFragmentManager()
             fragmentManager.popBackStack()
-
         }
         binding.cartInFragmentHome.setOnClickListener {
             val bundle = bundleOf("key" to "Cart")
@@ -178,16 +180,17 @@ class SelectedFragment : Fragment() {
         }
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("SetTextI18n")
     private fun showDialog(item: ProductDemo?) {
-        var amongnow: Int = 1
+        var amongnow = 1
         val bottomSheetDialog = BottomSheetDialog(requireContext())
         val binding: DialogaddtocartBinding = DialogaddtocartBinding.inflate(layoutInflater)
         var amongCart = 0
         viewModel.amongcart.observe(viewLifecycleOwner) { among ->
-            var checkAmong = among.products.data.filter { data -> data.id == item!!.id }
+            val checkAmong = among.products.data.filter { data -> data.id == item!!.id }
                 .filter { data -> data.so_luong > 0 }
-            checkAmong.forEach { it ->
+            checkAmong.forEach {
                 amongCart = it.so_luong
             }
 
@@ -282,10 +285,10 @@ class SelectedFragment : Fragment() {
 
         binding.add.setOnClickListener {
             binding.sos.visibility = View.INVISIBLE
-            if (item.so_luong_toi_da > 1) {
-                amongnow = minOf(amongnow + 1, item.so_luong_toi_da)
+            amongnow = if (item.so_luong_toi_da > 1) {
+                minOf(amongnow + 1, item.so_luong_toi_da)
             } else {
-                amongnow = minOf(amongnow + 1)
+                minOf(amongnow + 1)
             }
             binding.edtAmong.setText("$amongnow")
             if (amongnow == item.so_luong_toi_da) {
@@ -297,10 +300,10 @@ class SelectedFragment : Fragment() {
 
         binding.minus.setOnClickListener {
             binding.sos.visibility = View.INVISIBLE
-            if (item.so_luong_toi_thieu > 1) {
-                amongnow = maxOf(amongnow - 1, item.so_luong_toi_thieu)
+            amongnow = if (item.so_luong_toi_thieu > 1) {
+                maxOf(amongnow - 1, item.so_luong_toi_thieu)
             } else {
-                amongnow = maxOf(amongnow - 1, 1)
+                maxOf(amongnow - 1, 1)
             }
             binding.edtAmong.setText("$amongnow")
             if (amongnow == 1 || amongnow == item.so_luong_toi_thieu) {
@@ -352,4 +355,99 @@ class SelectedFragment : Fragment() {
             binding.alertAmongCartCategory.visibility = View.GONE
         }
     }
+private fun setupUIManagerShop(data: String?){
+    if (data != null&& data!="null") {
+        val spanCount = 2
+        binding.cartIn.visibility = View.VISIBLE
+        binding.cartInFragmentHome.visibility = View.INVISIBLE
+        apiServiceCart.fetchTakeItemAgency(data, "", hc, nt, nsx)
+            .enqueue(object : Callback<CategoryItemProduct> {
+                override fun onResponse(
+                    call: Call<CategoryItemProduct>,
+                    response: Response<CategoryItemProduct>
+                ) {
+                    if (response.isSuccessful) {
+                        listProduct = response.body()?.response?.data!!
+                        if (listProduct.isNotEmpty()) {
+                            val layoutManager = GridLayoutManager(context, spanCount)
+                            binding.recyclerViewSelect.layoutManager = layoutManager
+                            val myListAdapter = ApdapterItemCategory(requireActivity(), true)
+                            myListAdapter.setList(listProduct)
+                            binding.recyclerViewSelect.adapter = myListAdapter
+                        } else {
+                            binding.imageSalesHistory.visibility = View.VISIBLE
+                            binding.txtSalesHistory.visibility = View.VISIBLE
+                            Glide.with(requireContext())
+                                .asGif()
+                                .load(R.drawable.fail_history)
+                                .into(binding.imageSalesHistory)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
+                }
+            })}
 }
+    private fun setupUI(data: String?, check: Boolean) {
+        if (data != null&& data!="null") {
+
+            val spanCount = 2
+
+        if (check) {
+                binding.cartIn.visibility = View.VISIBLE
+                binding.cartInFragmentHome.visibility = View.INVISIBLE
+                title = data.toString()
+                apiServiceCart.fetchTakeItemAgency("", "", hc, nt, nsx)
+                    .enqueue(object : Callback<CategoryItemProduct> {
+                        override fun onResponse(
+                            call: Call<CategoryItemProduct>,
+                            response: Response<CategoryItemProduct>
+                        ) {
+                            if (response.isSuccessful) {
+                                listProduct = response.body()?.response?.data!!
+                                if (listProduct.isNotEmpty()) {
+                                    val layoutManager = GridLayoutManager(context, spanCount)
+                                    binding.recyclerViewSelect.layoutManager = layoutManager
+                                    val myListAdapter = ApdapterItemCategory(requireActivity(), check)
+                                    myListAdapter.setList(listProduct)
+                                    binding.recyclerViewSelect.adapter = myListAdapter
+                                } else {
+                                    binding.imageSalesHistory.visibility = View.VISIBLE
+                                    binding.txtSalesHistory.visibility = View.VISIBLE
+                                    Glide.with(requireContext())
+                                        .asGif()
+                                        .load(R.drawable.fail_history)
+                                        .into(binding.imageSalesHistory)
+                                }
+                            }
+                        }
+
+                        override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
+                        }
+                    })
+            } else {
+                categoryGenerel = gson.fromJson(data, SelectProdductCategory::class.java)
+                listProduct = categoryGenerel.listData
+                title = categoryGenerel.title
+                binding.textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15.toFloat())
+                if (listProduct.isNotEmpty()) {
+                    val layoutManager = GridLayoutManager(context, spanCount)
+                    binding.recyclerViewSelect.layoutManager = layoutManager
+                    val myListAdapter = ApdapterItemCategory(requireActivity(), false)
+                    myListAdapter.setList(listProduct)
+                    binding.recyclerViewSelect.adapter = myListAdapter
+
+                } else {
+                    binding.imageSalesHistory.visibility = View.VISIBLE
+                    binding.txtSalesHistory.visibility = View.VISIBLE
+                    Glide.with(requireContext())
+                        .asGif()
+                        .load(R.drawable.fail_history)
+                        .into(binding.imageSalesHistory)
+                }
+            }
+
+        }
+
+}}

@@ -2,14 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/boderwhite"
     android:layout_width="match_parent"
-    android:elevation="@dimen/_ten"
+    android:layout_height="wrap_content"
     android:layout_margin="@dimen/_five"
-    android:padding="@dimen/_five"
-    android:layout_height="wrap_content">
+    android:background="@drawable/boderwhite"
+    android:elevation="@dimen/_ten"
+    android:padding="@dimen/_five">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewHashTag"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
         <ImageView
-            android:id="@+id/imageItemProductCategory"
+            android:id="@+id/imageItemProduct"
             android:layout_width="@dimen/_zero"
             android:layout_height="@dimen/one_Hundred_Fifty"
             android:src="@drawable/iconviewmore"
@@ -17,48 +30,198 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+
+            />
+
+        <TextView
+            android:id="@+id/txtItemKM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_ten"
+            android:layout_marginTop="@dimen/_ten"
+            android:background="@drawable/boderwhite"
+            android:backgroundTint="#F30B0B"
+            android:paddingHorizontal="@dimen/fifteen"
+            android:paddingVertical="@dimen/_five"
+            android:text="KM"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHashTag"
+        android:layout_width="@dimen/_zero"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/nameItemProduct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar" />
+
+
     <TextView
-        android:id="@+id/nameItemProductCategory"
+        android:id="@+id/nameItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/_name"
+        android:textSize="@dimen/fifteenSp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bonusCoinsItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHashTag"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/bonusCoinsItemProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:ellipsize="end"
+        android:visibility="gone"
         android:maxLines="2"
+        android:text="@string/bonus_Coins"
+        android:textColor="#FF9E16"
         android:textStyle="bold"
-        android:textSize="@dimen/fifteenSp"
-        android:text="@string/_name"
-        app:layout_constraintTop_toBottomOf="@+id/imageItemProductCategory"
+        app:layout_constraintBottom_toTopOf="@+id/packingItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/nameItemProduct"
         tools:ignore="MissingConstraints" />
+
     <TextView
-        android:id="@+id/packingItemProductCategory"
+        android:id="@+id/packingItemProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:maxLines="2"
         android:text="@string/packing"
-        app:layout_constraintTop_toBottomOf="@+id/nameItemProductCategory"
-        tools:ignore="MissingConstraints"
-       />
+        app:layout_constraintBottom_toTopOf="@+id/priceItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/bonusCoinsItemProduct"
+        tools:ignore="MissingConstraints" />
+
     <TextView
-        android:id="@+id/priceItemProductCategory"
+        android:id="@+id/priceItemProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textStyle="bold"
-        android:textColor="@color/green"
         android:maxLines="2"
         android:text="@string/price_Item_Product"
-        app:layout_constraintTop_toBottomOf="@+id/packingItemProductCategory"
-        tools:ignore="MissingConstraints"
-       />
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sellPriceItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/packingItemProduct"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/sellPriceItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/sell_Price_Item_Product"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/amongMaxItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/priceItemProduct"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/amongMaxItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/amongmax"
+        app:layout_constraintBottom_toTopOf="@+id/amongMinItemProduct"
+        app:layout_constraintTop_toBottomOf="@+id/sellPriceItemProduct"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/amongMinItemProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/amongmin"
+        app:layout_constraintBottom_toTopOf="@+id/endProduct"
+        app:layout_constraintTop_toBottomOf="@+id/amongMaxItemProduct"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/endProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boderwhite"
+        android:backgroundTint="#FFC107"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="@dimen/_five"
+        android:text="@string/hashtag"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddToCart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amongMinItemProduct" />
+
     <Button
-        android:id="@+id/btnAddToCartCategory"
+        android:id="@+id/btnAddToCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_To_Cart"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/menuManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceItemProductCategory"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/menuManager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/eye"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/icons8_eye"
+            android:tint="@color/gray"
+            tools:ignore="ContentDescription,InefficientWeight,UseAppTint" />
+
+        <ImageView
+            android:id="@+id/selling"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/selling"
+            android:tint="@color/gray"
+            tools:ignore="ContentDescription,InefficientWeight,UseAppTint" />
+
+        <ImageView
+            android:id="@+id/editProduct"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/icons8_edit"
+            android:tint="#2196F3"
+            tools:ignore="ContentDescription,InefficientWeight,UseAppTint" />
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="@dimen/_zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_delete_forever_24"
+            android:tint="@color/red"
+            tools:ignore="ContentDescription,InefficientWeight,UseAppTint" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

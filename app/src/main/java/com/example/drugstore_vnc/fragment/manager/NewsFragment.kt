@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.drugstore_vnc.fragment.manager
 
 import android.os.Bundle

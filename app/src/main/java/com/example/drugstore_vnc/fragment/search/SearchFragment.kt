@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.drugstore_vnc.fragment.search
 
 import android.os.Bundle

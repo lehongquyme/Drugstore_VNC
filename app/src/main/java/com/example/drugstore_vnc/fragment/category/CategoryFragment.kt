@@ -57,7 +57,7 @@ class CategoryFragment : Fragment() , ApddapterPortfolio.OnItemClickListener{
         }
 
         recyclerView.layoutManager = LinearLayoutManager(context)
-        myListAdapter = ApddapterPortfolio(this,requireContext())
+        myListAdapter = ApddapterPortfolio(this,requireContext(),0)
         recyclerView.adapter = myListAdapter
         categoryViewModel.category.observe(viewLifecycleOwner) { data ->
             val list= data.map { it }

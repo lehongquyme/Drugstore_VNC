@@ -33,7 +33,7 @@ class SignUpPharmacyActivity : AppCompatActivity() {
     private val apiService = ClientAPI.getClient().create(SignUpDrugstoreAPI::class.java)
     private var idprovince = listOf<Int>()
     private lateinit var uriPath: String
-    var checkImage = false
+    private var checkImage = false
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,3 +1,4 @@
+@file:Suppress("DEPRECATION")
 
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
@@ -15,10 +16,12 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.drugstore_vnc.R
+import com.example.drugstore_vnc.local.SharedPreferencesToken
 import com.example.drugstore_vnc.util.CheckToPay
 import com.example.drugstore_vnc.viewModel.ViewModelProductAPI
 import com.example.drugstore_vnc.viewModelFatory.ViewModelFactory
 import com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+import okhttp3.Headers
 
 class WebViewFragment : Fragment() {
 
@@ -27,7 +30,14 @@ class WebViewFragment : Fragment() {
     private lateinit var googleProgressBar: GoogleProgressBar
     private lateinit var viewModel: ViewModelProductAPI
     private lateinit var productIdCart:MutableList<Int>
-
+    private lateinit var  authToken :String
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        authToken=SharedPreferencesToken(requireContext()).getToken()?.token.toString()
+        viewModel = ViewModelProvider(
+            this@WebViewFragment, ViewModelFactory(requireContext())
+        )[ViewModelProductAPI::class.java]
+    }
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,11 +54,9 @@ class WebViewFragment : Fragment() {
 
         back.setOnClickListener {
             requireFragmentManager().popBackStack()
+
         }
         if (url.isNotEmpty()&& url!=""&& url!="null") {
-            viewModel = ViewModelProvider(
-                this@WebViewFragment, ViewModelFactory(requireContext())
-            )[ViewModelProductAPI::class.java]
 
             if (productIdCart.isNotEmpty()) {
                 productIdCart.forEach { i ->
@@ -71,6 +79,7 @@ class WebViewFragment : Fragment() {
         val webSettings: WebSettings = webView.settings
         webSettings.javaScriptEnabled = true
 
+        webView.loadUrl(url, createHeaders(authToken))
         webView.webChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(view: WebView?, newProgress: Int) {
                 super.onProgressChanged(view, newProgress)
@@ -91,6 +100,14 @@ class WebViewFragment : Fragment() {
             }
         }
 
-        webView.loadUrl(url)
+
     }
+    private fun createHeaders(jwt: String): Map<String, String> {
+        val headers = Headers.Builder()
+            .add("Authorization", "Bearer $jwt")
+            .build()
+
+        return headers.toMultimap().mapValues { it.value.first() }
+    }
+
 }

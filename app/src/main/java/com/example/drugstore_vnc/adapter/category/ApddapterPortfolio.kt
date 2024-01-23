@@ -23,6 +23,7 @@ import kotlinx.coroutines.withContext
 class ApddapterPortfolio(
     private val listener: OnItemClickListener,
     private val context: Context,
+    private val  agencys:Int
 ) :
     RecyclerView.Adapter<ApddapterPortfolio.ViewHolder>() {
     private var items: MutableList<ResponseCategory> = mutableListOf()
@@ -30,6 +31,7 @@ class ApddapterPortfolio(
         items = item
         notifyDataSetChanged()
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -57,7 +59,8 @@ class ApddapterPortfolio(
             "nha_san_xuat" -> holder.title.text =context.getString(R.string.producer)
         }
         val listCategory = item.category
-        val categoryAdapter = ApdapterCategory(context, listCategory, item.key)
+
+        val categoryAdapter = ApdapterCategory(context, listCategory, item.key,agencys)
         holder.recycCategory.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = categoryAdapter

@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.drugstore_vnc.fragment.manager
 
 import android.content.Intent
@@ -71,7 +73,7 @@ class ContactFragment : Fragment() {
         }
         binding.constraintPhone1.setOnClickListener {
             val dialIntent = Intent(Intent.ACTION_DIAL)
-            dialIntent.data = Uri.parse("tel:" + phone)
+            dialIntent.data = Uri.parse("tel:$phone")
             startActivity(dialIntent)
         }
 
@@ -98,7 +100,7 @@ class ContactFragment : Fragment() {
         }
     }
 
-    fun extractPhoneNumber(input: String): String? {
+    private fun extractPhoneNumber(input: String): String? {
         val regex = Regex("""\b\d{10,11}\b""")
         val matchResult = regex.find(input)
         return matchResult?.value

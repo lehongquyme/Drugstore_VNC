@@ -69,6 +69,16 @@ interface TakeProductInCart {
         @FieldMap fields: Map<String, Int>,
         @Field("page") page: Int,
     ): Call<CategoryItemProduct>
+    @FormUrlEncoded
+    @POST("v2/agency/products")
+    fun fetchTakeItemAgency(
+        @Field("category") category:String?,
+        @Field("search") search:String?,
+        @Field("hoat_chat") hoat_chat:Int?,
+        @Field("nhom_thuoc") nhom_thuoc:Int?,
+        @Field("nha_san_xuat") nha_san_xuat:Int?,
+
+    ): Call<CategoryItemProduct>
 
     @FormUrlEncoded
     @POST("v2/search")

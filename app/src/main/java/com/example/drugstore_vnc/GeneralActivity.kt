@@ -1,5 +1,6 @@
 package com.example.drugstore_vnc
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -51,9 +52,11 @@ class GeneralActivity : AppCompatActivity() {
 
     private var doubleBackToExitPressedOnce = false
 
+    @Deprecated("Deprecated in Java")
+    @SuppressLint("SuspiciousIndentation", "MissingSuperCall")
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
+            this.finish()
             return
         }
 

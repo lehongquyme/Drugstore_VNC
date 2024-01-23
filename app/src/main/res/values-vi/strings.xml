@@ -95,6 +95,7 @@
     <string name="portfolio">Danh mục</string>
     <string name="amongmax">Số lượng lớn nhất</string>
     <string name="km">KM</string>
+    <string name="phamarcy">Tiệm thuốc</string>
     <string name="app_name">Drugstore_VNC</string>
     <string name="login_pharmacy">Đăng nhập thành viên</string>
     <string name="home">Trang chủ</string>
@@ -144,4 +145,7 @@
     <string name="checkVoucher">Có vẻ như mã giảm giá của bạn không hợp lệ vui lòng thử mã khác</string>
     <string name="warningVoucher">Có vẻ như mã giảm giá của bạn không hợp lệ vui lòng thử mã khác</string>
     <string name="no_data">Không có dữ liệu</string>
+    <string name="promotion">Khuyến mãi</string>
+    <string name="selling">Bán Chạy</string>
+    <string name="outStock">Hết hàng</string>
 </resources>
