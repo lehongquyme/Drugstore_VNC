@@ -84,6 +84,7 @@ class ApdapterItemCategory(private val context: Context, private val check: Bool
             holder.btnAdd.isEnabled = false
         }
         if (!CheckToPay.check) {
+            holder.price.visibility= View.INVISIBLE
             val textColorStateList = ColorStateList(
                 arrayOf(
                     intArrayOf(android.R.attr.state_enabled),
