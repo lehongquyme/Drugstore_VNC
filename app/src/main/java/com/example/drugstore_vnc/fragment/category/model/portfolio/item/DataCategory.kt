@@ -1,6 +1,10 @@
 package com.example.drugstore_vnc.model.portfolio.item
 
+import com.example.drugstore_vnc.model.home.Tagse
+import com.google.gson.annotations.SerializedName
+
 data class DataCategory(
+    @SerializedName("bonus_coins") var bonus_coins: Int,
     val detail_url: String,
     val discount_price: Int,
     val don_gia: Int,
@@ -17,6 +21,6 @@ data class DataCategory(
     val so_luong: Int,
     val so_luong_toi_da: Int,
     val so_luong_toi_thieu: Int,
-    val tags: List<Any>,
+    val tags: List<Tagse>?,
     val ten_san_pham: String
 )

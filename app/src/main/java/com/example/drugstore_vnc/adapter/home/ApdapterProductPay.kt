@@ -68,12 +68,12 @@ class ApdapterProductPay(
         }
         holder.nameItem.text = item.ten_san_pham
         holder.packing.text = item.quy_cach_dong_goi
-        holder.price.text = "${item.don_gia} VND"
+        holder.price.text = item.don_gia.formatAsVND()
         if (item.discount_price < item.don_gia) {
-            holder.price.text = "${item.don_gia} VND"
+            holder.price.text = item.don_gia.formatAsVND()
             holder.price.setTypeface(null, Typeface.NORMAL)
             holder.price.setTextColor(ContextCompat.getColor(context, R.color.black))
-            holder.sellPrice.text = "${item.discount_price} VND"
+            holder.sellPrice.text = item.discount_price.formatAsVND()
             holder.price.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         } else {
             holder.sellPrice.visibility = View.GONE
@@ -103,7 +103,10 @@ class ApdapterProductPay(
     override fun getItemCount(): Int {
         return items.size
     }
-
+    fun Int.formatAsVND(): String {
+        val formattedString = String.format("%,d VND", this)
+        return formattedString.replace(",", ".")
+    }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val KM: TextView = itemView.findViewById(R.id.txtItemKMPay)
         val imageView: ImageView = itemView.findViewById(R.id.imageItemProductPay)

@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drugstore_vnc.R
@@ -21,7 +23,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ApddapterPortfolio(
-    private val listener: OnItemClickListener,
+    private val listener: OnItemClickListener?,
     private val context: Context,
     private val  agencys:Int
 ) :
@@ -65,8 +67,14 @@ class ApddapterPortfolio(
             layoutManager = LinearLayoutManager(context)
             adapter = categoryAdapter
         }
+        if (agencys==0){
         holder.iconImage.setOnClickListener {
-            listener.onItemClick(position, ResponseXX(item.key, item.icon))
+            listener?.onItemClick( ResponseXX(item.key, item.icon))
+        }}else{
+            holder.iconImage.setOnClickListener {
+                val bundle = bundleOf("Portfolio" to item.key)
+                holder.iconImage.findNavController().navigate(R.id.detailFragment, bundle)
+            }
         }
     }
 
@@ -82,6 +90,9 @@ class ApddapterPortfolio(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, value: ResponseXX)
+        fun onItemClick(value: ResponseXX)
+    }
+    interface OnItemClickListenerShop {
+        fun onItemClickShop(position: Int, value: ResponseXX)
     }
 }

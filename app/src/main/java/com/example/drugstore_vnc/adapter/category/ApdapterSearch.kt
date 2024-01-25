@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.drugstore_vnc.R
 import com.example.drugstore_vnc.fragment.search.model.ListProduct
 import com.example.drugstore_vnc.fragment.search.model.ReturnDataProduct
-import com.example.drugstore_vnc.getAPI.ProductAPI
 import com.example.drugstore_vnc.model.portfolio.ResponseSearch
+import com.example.drugstore_vnc.postAPI.ProductAPI
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,14 +18,12 @@ import retrofit2.Response
 class ApdapterSearch(
     private val clickListener: OnItemClickListener,
     private val itemList: List<ResponseSearch>?,
-    apiServiceCart: ProductAPI,
+    var apiServiceCart: ProductAPI,
 ) : RecyclerView.Adapter<ApdapterSearch.ViewHolder>() {
-    var apiServiceCart = apiServiceCart
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemsearch, parent, false)
         return ViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList?.get(position)
         holder.itemTextView.text = item?.ten_san_pham ?: ""

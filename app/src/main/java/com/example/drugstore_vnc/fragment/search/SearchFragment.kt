@@ -19,8 +19,8 @@ import com.example.drugstore_vnc.R
 import com.example.drugstore_vnc.adapter.category.ApdapterSearch
 import com.example.drugstore_vnc.client.ClientAPI
 import com.example.drugstore_vnc.fragment.search.model.ListProduct
-import com.example.drugstore_vnc.getAPI.ProductAPI
 import com.example.drugstore_vnc.model.portfolio.Search
+import com.example.drugstore_vnc.postAPI.ProductAPI
 import com.example.drugstore_vnc.postAPI.TakeProductInCart
 import com.google.gson.Gson
 import retrofit2.Call

@@ -32,7 +32,7 @@ import com.example.drugstore_vnc.databinding.DialogaddtocartBinding
 import com.example.drugstore_vnc.databinding.FragmentHomeBinding
 import com.example.drugstore_vnc.local.SharedPreferencesToken
 import com.example.drugstore_vnc.model.home.HomepageData
-import com.example.drugstore_vnc.model.home.ProductDemo
+import com.example.drugstore_vnc.model.portfolio.item.DataCategory
 import com.example.drugstore_vnc.postAPI.TakeProductInCart
 import com.example.drugstore_vnc.util.AddImageSignUpGeneral.isUrlReachable
 import com.example.drugstore_vnc.util.CheckToPay
@@ -164,7 +164,7 @@ class HomeFragment : Fragment() {
         }
         return binding.root
     }
-    private fun takeListData(it: HomepageData, value: Any, among: Int): List<ProductDemo> {
+    private fun takeListData(it: HomepageData, value: Any, among: Int): List<DataCategory> {
         return it.products.flatMap { typeProduct ->
             typeProduct.data.filter {
                 typeProduct.value == value
@@ -177,7 +177,7 @@ class HomeFragment : Fragment() {
         view?.findNavController()?.navigate(fragment, bundle)
     }
 
-    private fun recycleView(recycle: RecyclerView, list: List<ProductDemo>, check: Boolean) {
+    private fun recycleView(recycle: RecyclerView, list: List<DataCategory>, check: Boolean) {
         val layoutManager = GridLayoutManager(requireContext(), 2)
         job = CoroutineScope(Dispatchers.Main).launch {
             try {
@@ -197,8 +197,9 @@ class HomeFragment : Fragment() {
                         myListAdapter.setList(list)
                         myListAdapter.setOnItemClickListener(object :
                             ApdapterProduct.OnItemClickListener {
-                            override fun onItemClick(position: Int, item: ProductDemo?) {
+                            override fun onItemClick(position: Int, item: DataCategory?) {
                                 showDialog(item)
+
                             }
                         })
                         recycle.adapter = myListAdapter
@@ -211,7 +212,7 @@ class HomeFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showDialog(item: ProductDemo?) {
+    private fun showDialog(item: DataCategory?) {
         var amongnow: Int = 1
         val bottomSheetDialog = BottomSheetDialog(requireContext())
         val binding: DialogaddtocartBinding = DialogaddtocartBinding.inflate(layoutInflater)
@@ -248,8 +249,8 @@ class HomeFragment : Fragment() {
 
         if (item != null) {
 
-            val itemsHashTag = item.tags.map { it.name }.toMutableList()
-            val adapterHashTag = ApdapterHashTag(itemsHashTag)
+            val itemsHashTag = item.tags?.map { it.name }?.toMutableList()
+            val adapterHashTag = itemsHashTag?.let { ApdapterHashTag(it) }
             binding.listHashTag.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 

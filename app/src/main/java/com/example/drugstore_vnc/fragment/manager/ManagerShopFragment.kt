@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.drugstore_vnc.R
 import com.example.drugstore_vnc.adapter.category.ApddapterPortfolio
 import com.example.drugstore_vnc.databinding.FragmentManagerShopBinding
-import com.example.drugstore_vnc.model.pay.ResponseXX
 import com.example.drugstore_vnc.util.CheckToPay
 import com.example.drugstore_vnc.viewModel.ViewModelSpinnerAPI
 import kotlinx.coroutines.CoroutineScope
@@ -25,7 +24,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-class ManagerShopFragment : Fragment() , ApddapterPortfolio.OnItemClickListener {
+class ManagerShopFragment : Fragment() {
     private lateinit var binding: FragmentManagerShopBinding
     private lateinit var myListAdapter: ApddapterPortfolio
     private lateinit var managerShopViewModel: ViewModelSpinnerAPI
@@ -46,7 +45,7 @@ class ManagerShopFragment : Fragment() , ApddapterPortfolio.OnItemClickListener 
 
         binding.recyclerViewSelectMangerShop.layoutManager = LinearLayoutManager(requireContext())
 
-        myListAdapter = ApddapterPortfolio(this, requireContext(),1)
+        myListAdapter = ApddapterPortfolio(null, requireContext(),1)
         binding.recyclerViewSelectMangerShop.adapter = myListAdapter
         managerShopViewModel.category.observe(viewLifecycleOwner) { data ->
             val list = data.map { it }
@@ -94,8 +93,6 @@ class ManagerShopFragment : Fragment() , ApddapterPortfolio.OnItemClickListener 
         }
         return binding.root
     }
-    override fun onItemClick(position: Int, value: ResponseXX) {
-///
-    }
+
 
 }

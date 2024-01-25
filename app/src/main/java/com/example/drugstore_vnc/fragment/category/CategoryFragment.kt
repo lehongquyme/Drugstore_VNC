@@ -80,7 +80,7 @@ class CategoryFragment : Fragment() , ApddapterPortfolio.OnItemClickListener{
         return rootView
     }
 
-    override fun onItemClick(position: Int,value:ResponseXX) {
+    override fun onItemClick(value:ResponseXX) {
         val gson = Gson()
         val jsonString = gson.toJson(value)
         val bundle = bundleOf("Category" to jsonString)

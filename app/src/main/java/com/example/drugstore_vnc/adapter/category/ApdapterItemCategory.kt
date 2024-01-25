@@ -18,7 +18,10 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drugstore_vnc.R
+import com.example.drugstore_vnc.client.ClientAPI
+import com.example.drugstore_vnc.fragment.home.model.select.Select
 import com.example.drugstore_vnc.model.portfolio.item.DataCategory
+import com.example.drugstore_vnc.postAPI.ProductAPI
 import com.example.drugstore_vnc.util.AddImageSignUpGeneral
 import com.example.drugstore_vnc.util.CheckToPay
 import com.squareup.picasso.Picasso
@@ -26,10 +29,17 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ApdapterItemCategory(private val context: Context, private val check: Boolean) :
     RecyclerView.Adapter<ApdapterItemCategory.ViewHolder>() {
     private lateinit var items: List<DataCategory>
+    private lateinit var apiServiceCart: ProductAPI
+    private var clickListener: OnItemClickListener? = null
+
+
     @SuppressLint("NotifyDataSetChanged")
     fun setList(item: List<DataCategory>) {
         item.let {
@@ -39,6 +49,7 @@ class ApdapterItemCategory(private val context: Context, private val check: Bool
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.itemcategoryproduct, parent, false)
         return ViewHolder(view)
@@ -47,6 +58,8 @@ class ApdapterItemCategory(private val context: Context, private val check: Bool
     @SuppressLint("SetTextI18n", "SuspiciousIndentation")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
+        val retrofit = ClientAPI.getClientProduct(context)
+        apiServiceCart = retrofit.create(ProductAPI::class.java)
         CoroutineScope(Dispatchers.IO).launch {
             val isUrlReachable = AddImageSignUpGeneral.isUrlReachable(item.img_url)
             withContext(Dispatchers.Main) {
@@ -57,7 +70,9 @@ class ApdapterItemCategory(private val context: Context, private val check: Bool
                 }
             }
         }
-
+        holder.btnAdd.setOnClickListener {
+                clickListener?.onItemClick(position, item)
+        }
 
         if (item.so_luong == 0) {
             holder.endProduct.visibility = View.VISIBLE
@@ -84,7 +99,7 @@ class ApdapterItemCategory(private val context: Context, private val check: Bool
             holder.btnAdd.isEnabled = false
         }
         if (!CheckToPay.check) {
-            holder.price.visibility= View.INVISIBLE
+            holder.price.visibility = View.INVISIBLE
             val textColorStateList = ColorStateList(
                 arrayOf(
                     intArrayOf(android.R.attr.state_enabled),
@@ -110,13 +125,16 @@ class ApdapterItemCategory(private val context: Context, private val check: Bool
         holder.packing.text = item.quy_cach_dong_goi
         holder.price.text = "${item.don_gia} VND"
         if (item.discount_price < item.don_gia) {
-            holder.price.text = "${item.don_gia} VND"
+            holder.sellPrice.visibility = View.VISIBLE
+            holder.price.visibility = View.VISIBLE
+            holder.price.text = item.don_gia.formatAsVND()
             holder.price.setTypeface(null, Typeface.NORMAL)
             holder.price.setTextColor(ContextCompat.getColor(context, R.color.black))
-            holder.sellPrice.text = "${item.discount_price} VND"
+            holder.sellPrice.text = item.discount_price.formatAsVND()
             holder.price.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         } else {
             holder.sellPrice.visibility = View.GONE
+            holder.price.visibility = View.VISIBLE
         }
 
         if (!check) {
@@ -133,10 +151,46 @@ class ApdapterItemCategory(private val context: Context, private val check: Bool
 
             }
             holder.editProduct.setOnClickListener {
-                val bundle = bundleOf("URL" to "http://18.138.176.213/agency/products/edit/${item.id}")
+                val bundle =
+                    bundleOf("URL" to "http://18.138.176.213/agency/products/edit/${item.id}")
                 holder.editProduct.findNavController().navigate(R.id.webViewFragment, bundle)
             }
+            holder.eye.setOnClickListener {
+                loadAgain(apiServiceCart.fetchDataAgency(item.id))
+            }
+            holder.selling.setOnClickListener {
+                loadAgain(apiServiceCart.fetchDataBestseller(item.id))
+            }
+            holder.delete.setOnClickListener {
+                loadAgain(apiServiceCart.fetchDataDelete(item.id))
+
+            }
         }
+    }
+
+    private fun loadAgain(call: Call<Select>) {
+        call.enqueue(object :
+            Callback<Select> {
+            override fun onResponse(
+                call: Call<Select>,
+                response: Response<Select>
+            ) {
+                if (response.isSuccessful) {
+
+                    if (response.body()!!.code ==0) {
+                        clickListener?.onEyeClick()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<Select>, t: Throwable) {
+            }
+        })
+    }
+
+    private fun Int.formatAsVND(): String {
+        val formattedString = String.format("%,d VND", this)
+        return formattedString.replace(",", ".")
     }
 
     override fun getItemCount(): Int {
@@ -158,6 +212,17 @@ class ApdapterItemCategory(private val context: Context, private val check: Bool
         val eye: ImageView = itemView.findViewById(R.id.eye)
         val selling: ImageView = itemView.findViewById(R.id.selling)
         val editProduct: ImageView = itemView.findViewById(R.id.editProduct)
+        val delete: ImageView = itemView.findViewById(R.id.delete)
 
+    }
+
+    // ...
+    interface OnItemClickListener {
+        fun onEyeClick()
+        fun onItemClick(position: Int, item: DataCategory?)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.clickListener = listener
     }
 }

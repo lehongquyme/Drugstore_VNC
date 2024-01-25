@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drugstore_vnc.R
-import com.example.drugstore_vnc.model.home.ProductDemo
+import com.example.drugstore_vnc.model.portfolio.item.DataCategory
 import com.example.drugstore_vnc.util.AddImageSignUpGeneral.isUrlReachable
 import com.example.drugstore_vnc.util.CheckToPay
 import com.squareup.picasso.Picasso
@@ -30,7 +30,7 @@ class ApdapterProduct(private val context: Context) :
     RecyclerView.Adapter<ApdapterProduct.ViewHolder>() {
     private var mListener: OnItemClickListener? = null
     private var checkAdd = true
-    private lateinit var items: List<ProductDemo>
+    private lateinit var items: List<DataCategory>
     private var itemsHashTag = mutableListOf<String>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -41,7 +41,7 @@ class ApdapterProduct(private val context: Context) :
         }
     }
 
-    fun setList(item: List<ProductDemo>) {
+    fun setList(item: List<DataCategory>) {
         item.let {
             items = it
             notifyDataSetChanged()
@@ -76,7 +76,7 @@ class ApdapterProduct(private val context: Context) :
         } else {
             holder.KM.visibility = View.GONE
         }
-        itemsHashTag = item.tags.map { it.name }.toMutableList()
+        itemsHashTag = item.tags?.map { it.name }!!.toMutableList()
         val recyclerView = ApdapterHashTag(itemsHashTag)
         holder.hashTag.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -92,12 +92,12 @@ class ApdapterProduct(private val context: Context) :
         }
         holder.nameItem.text = item.ten_san_pham
         holder.packing.text = item.quy_cach_dong_goi
-        holder.price.text = "${item.don_gia} VND"
+        holder.price.text = item.don_gia.formatAsVND()
         if (item.discount_price < item.don_gia) {
-            holder.price.text = "${item.don_gia} VND"
+            holder.price.text = item.don_gia.formatAsVND()
             holder.price.setTypeface(null, Typeface.NORMAL)
             holder.price.setTextColor(ContextCompat.getColor(context, R.color.black))
-            holder.sellPrice.text = "${item.discount_price} VND"
+            holder.sellPrice.text = item.discount_price.toInt().formatAsVND()
             holder.price.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         } else {
             holder.sellPrice.visibility = View.GONE
@@ -140,7 +140,10 @@ class ApdapterProduct(private val context: Context) :
     override fun getItemCount(): Int {
         return items.size
     }
-
+    fun Int.formatAsVND(): String {
+        val formattedString = String.format("%,d VND", this)
+        return formattedString.replace(",", ".")
+    }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val KM: TextView = itemView.findViewById(R.id.txtItemKM)
         val imageView: ImageView = itemView.findViewById(R.id.imageItemProduct)
@@ -157,6 +160,6 @@ class ApdapterProduct(private val context: Context) :
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int, item: ProductDemo?)
+        fun onItemClick(position: Int, item: DataCategory?)
     }
 }

@@ -28,7 +28,7 @@ import com.example.drugstore_vnc.client.CallAPI
 import com.example.drugstore_vnc.client.ClientAPI
 import com.example.drugstore_vnc.databinding.DialogaddtocartBinding
 import com.example.drugstore_vnc.fragment.search.model.ListProduct
-import com.example.drugstore_vnc.model.home.ProductDemo
+import com.example.drugstore_vnc.model.portfolio.item.DataCategory
 import com.example.drugstore_vnc.postAPI.TakeProductInCart
 import com.example.drugstore_vnc.util.AddImageSignUpGeneral
 import com.example.drugstore_vnc.viewModel.ViewModelProductAPI
@@ -83,7 +83,7 @@ private lateinit var recyclerViewItemSearch:RecyclerView
         val myListAdapter = ApdapterProduct(requireContext())
         myListAdapter.setList(list)
         myListAdapter.setOnItemClickListener(object : ApdapterProduct.OnItemClickListener {
-            override fun onItemClick(position: Int, item: ProductDemo?) {
+            override fun onItemClick(position: Int, item: DataCategory?) {
                 showDialog(item)
             }
         })
@@ -107,7 +107,7 @@ private lateinit var recyclerViewItemSearch:RecyclerView
         return  view
     }
     @SuppressLint("SetTextI18n")
-    private fun showDialog(item: ProductDemo?) {
+    private fun showDialog(item: DataCategory?) {
         var amongnow = 1
         val bottomSheetDialog = BottomSheetDialog(requireContext())
         val binding: DialogaddtocartBinding = DialogaddtocartBinding.inflate(layoutInflater)
@@ -144,8 +144,8 @@ private lateinit var recyclerViewItemSearch:RecyclerView
 
         if (item != null) {
 
-            val itemsHashTag = item.tags.map { it.name }.toMutableList()
-            val adapterHashTag = ApdapterHashTag(itemsHashTag)
+            val itemsHashTag = item.tags?.map { it.name }?.toMutableList()
+            val adapterHashTag = itemsHashTag?.let { ApdapterHashTag(it) }
             binding.listHashTag.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 

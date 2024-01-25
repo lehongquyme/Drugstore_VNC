@@ -1,5 +1,7 @@
 @file:Suppress("DEPRECATION")
 
+package com.example.drugstore_vnc
+
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -15,7 +17,6 @@ import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.drugstore_vnc.R
 import com.example.drugstore_vnc.local.SharedPreferencesToken
 import com.example.drugstore_vnc.util.CheckToPay
 import com.example.drugstore_vnc.viewModel.ViewModelProductAPI

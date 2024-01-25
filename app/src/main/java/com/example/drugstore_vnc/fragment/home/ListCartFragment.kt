@@ -52,7 +52,7 @@ class ListCartFragment : Fragment() {
     private fun showTooltip() {
         val balloon = Balloon.Builder(requireContext())
             .setText(getString(R.string.donePriceListCard))
-            .setOverlayColorResource(R.color.gray)
+            .setOverlayColorResource(R.color.graylight)
             .setIsVisibleOverlay(true)
             .setOverlayPadding(6f)
             .setArrowSize(10)

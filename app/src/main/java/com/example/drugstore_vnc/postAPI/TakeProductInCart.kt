@@ -1,5 +1,6 @@
 package com.example.drugstore_vnc.postAPI
 
+import com.example.drugstore_vnc.fragment.history.model.history.Detail
 import com.example.drugstore_vnc.fragment.manager.model.logout.Logout
 import com.example.drugstore_vnc.model.history.purchase.PurchaseHistory
 import com.example.drugstore_vnc.model.history.purchaseItem.PurchaseItem
@@ -96,5 +97,11 @@ interface TakeProductInCart {
         @Field("id") id: Int,
         @Field("page") page: Int?
     ): Call<PurchaseItem>
-
+    @FormUrlEncoded
+    @POST("v2/agency/category_type")
+    fun fetchDataCategoryType(
+        @Field("type") type: String,
+        @Field("page") page: Int?,
+        @Field("search") search: String?,
+    ): Call<Detail>
 }

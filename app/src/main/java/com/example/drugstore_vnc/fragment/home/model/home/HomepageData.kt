@@ -1,11 +1,13 @@
 package com.example.drugstore_vnc.model.home
 
 import com.example.drugstore_vnc.fragment.home.model.home.ImgProduct
+import com.example.drugstore_vnc.model.portfolio.item.DataCategory
 import com.google.gson.annotations.SerializedName
 
 
 data class ProductDemo(
     @SerializedName("bonus_coins") var bonus_coins: Int,
+
     @SerializedName("detail_url") var detail_url: String,
     @SerializedName("discount_price") var discount_price: Double,
     @SerializedName("don_gia") var don_gia: Int,
@@ -44,7 +46,7 @@ data class TypeProduct(
     @SerializedName("key") var key: String,
     @SerializedName("name") var name: String,
     @SerializedName("value") var value: String,
-    @SerializedName("data") var data: List<ProductDemo>
+    @SerializedName("data") var data: List<DataCategory>
 )
 
 data class Banner(@SerializedName("value") var value: String?)

@@ -45,8 +45,6 @@ class SelectCategoryFragment : Fragment() {
     private lateinit var title: TextView
     private lateinit var search: EditText
     private lateinit var filter: String
-
-
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    tools:context=".fragment.home.SelectedFragment">
     <data>
         <!-- Example: Declare a variable with the name "viewModel" -->
         <variable
             name="viewModel"
             type="com.example.drugstore_vnc.fragment.home.SelectedFragment" />
 
-        <!-- You can add more variables or imports as needed -->
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
   >

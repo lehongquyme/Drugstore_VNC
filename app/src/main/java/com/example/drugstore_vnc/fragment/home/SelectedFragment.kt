@@ -30,7 +30,6 @@ import com.example.drugstore_vnc.client.CallAPI
 import com.example.drugstore_vnc.client.ClientAPI
 import com.example.drugstore_vnc.databinding.DialogaddtocartBinding
 import com.example.drugstore_vnc.databinding.FragmentSelectedBinding
-import com.example.drugstore_vnc.model.home.ProductDemo
 import com.example.drugstore_vnc.model.portfolio.item.CategoryItemProduct
 import com.example.drugstore_vnc.model.portfolio.item.DataCategory
 import com.example.drugstore_vnc.model.portfolio.item.SelectProdductCategory
@@ -52,7 +51,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SelectedFragment : Fragment() {
+class SelectedFragment : Fragment(), ApdapterItemCategory.OnItemClickListener {
     private lateinit var binding: FragmentSelectedBinding
     private lateinit var viewModel: ViewModelProductAPI
     private lateinit var categoryGenerel: SelectProdductCategory
@@ -62,6 +61,7 @@ class SelectedFragment : Fragment() {
     private lateinit var gson: Gson
     private lateinit var apiServiceCart: TakeProductInCart
     private var hc: Int? = null
+    private var category: String? = null
     private var nt: Int? = null
     private var nsx: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,23 +99,22 @@ class SelectedFragment : Fragment() {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_selected, container, false
         )
-        when(category){
+        when (category) {
 
             "ban_chay" -> {
                 title = getString(R.string.selling_Products)
-                setupUIManagerShop(category)
+                setupUI(title, true)
             }
-
 
 
             "khuyen_mai" -> {
                 title = getString(R.string.promotional_Products)
-                setupUIManagerShop(category)
+                setupUI(title, true)
             }
 
             "all" -> {
                 title = getString(R.string.all_Products)
-                setupUIManagerShop(category)
+                setupUI(title, true)
             }
         }
         when (filter) {
@@ -139,8 +138,10 @@ class SelectedFragment : Fragment() {
                 filterList(filter)
             }
         }
-            setupUI(agency, true)
-            setupUI(categoryProduct,false)
+        setupUI(agency, true)
+        setupUI(
+            categoryProduct, false
+        )
 
         binding.textView.text = title
         binding.backHome.setOnClickListener {
@@ -171,7 +172,7 @@ class SelectedFragment : Fragment() {
                 myListAdapter.setAdd(check)
                 myListAdapter.setList(productItemPromotional)
                 myListAdapter.setOnItemClickListener(object : ApdapterProduct.OnItemClickListener {
-                    override fun onItemClick(position: Int, item: ProductDemo?) {
+                    override fun onItemClick(position: Int, item: DataCategory?) {
                         showDialog(item)
                     }
                 })
@@ -182,7 +183,7 @@ class SelectedFragment : Fragment() {
 
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("SetTextI18n")
-    private fun showDialog(item: ProductDemo?) {
+    private fun showDialog(item: DataCategory?) {
         var amongnow = 1
         val bottomSheetDialog = BottomSheetDialog(requireContext())
         val binding: DialogaddtocartBinding = DialogaddtocartBinding.inflate(layoutInflater)
@@ -219,11 +220,10 @@ class SelectedFragment : Fragment() {
 
         if (item != null) {
 
-            val itemsHashTag = item.tags.map { it.name }.toMutableList()
-            val adapterHashTag = ApdapterHashTag(itemsHashTag)
+            val itemsHashTag = item.tags?.map { it.name }?.toMutableList()
+            val adapterHashTag = itemsHashTag?.let { ApdapterHashTag(it) }
             binding.listHashTag.apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-
                 adapter = adapterHashTag
             }
 
@@ -355,90 +355,84 @@ class SelectedFragment : Fragment() {
             binding.alertAmongCartCategory.visibility = View.GONE
         }
     }
-private fun setupUIManagerShop(data: String?){
-    if (data != null&& data!="null") {
-        val spanCount = 2
-        binding.cartIn.visibility = View.VISIBLE
-        binding.cartInFragmentHome.visibility = View.INVISIBLE
-        apiServiceCart.fetchTakeItemAgency(data, "", hc, nt, nsx)
-            .enqueue(object : Callback<CategoryItemProduct> {
-                override fun onResponse(
-                    call: Call<CategoryItemProduct>,
-                    response: Response<CategoryItemProduct>
-                ) {
-                    if (response.isSuccessful) {
-                        listProduct = response.body()?.response?.data!!
-                        if (listProduct.isNotEmpty()) {
-                            val layoutManager = GridLayoutManager(context, spanCount)
-                            binding.recyclerViewSelect.layoutManager = layoutManager
-                            val myListAdapter = ApdapterItemCategory(requireActivity(), true)
-                            myListAdapter.setList(listProduct)
-                            binding.recyclerViewSelect.adapter = myListAdapter
-                        } else {
-                            binding.imageSalesHistory.visibility = View.VISIBLE
-                            binding.txtSalesHistory.visibility = View.VISIBLE
-                            Glide.with(requireContext())
-                                .asGif()
-                                .load(R.drawable.fail_history)
-                                .into(binding.imageSalesHistory)
-                        }
-                    }
-                }
 
-                override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
-                }
-            })}
-}
-    private fun setupUI(data: String?, check: Boolean) {
-        if (data != null&& data!="null") {
-
+    private fun setupUIManagerShop(data: String?) {
+        if (data != null && data != "null") {
             val spanCount = 2
-
-        if (check) {
-                binding.cartIn.visibility = View.VISIBLE
-                binding.cartInFragmentHome.visibility = View.INVISIBLE
-                title = data.toString()
-                apiServiceCart.fetchTakeItemAgency("", "", hc, nt, nsx)
-                    .enqueue(object : Callback<CategoryItemProduct> {
-                        override fun onResponse(
-                            call: Call<CategoryItemProduct>,
-                            response: Response<CategoryItemProduct>
-                        ) {
-                            if (response.isSuccessful) {
-                                listProduct = response.body()?.response?.data!!
-                                if (listProduct.isNotEmpty()) {
-                                    val layoutManager = GridLayoutManager(context, spanCount)
-                                    binding.recyclerViewSelect.layoutManager = layoutManager
-                                    val myListAdapter = ApdapterItemCategory(requireActivity(), check)
-                                    myListAdapter.setList(listProduct)
-                                    binding.recyclerViewSelect.adapter = myListAdapter
-                                } else {
-                                    binding.imageSalesHistory.visibility = View.VISIBLE
-                                    binding.txtSalesHistory.visibility = View.VISIBLE
-                                    Glide.with(requireContext())
-                                        .asGif()
-                                        .load(R.drawable.fail_history)
-                                        .into(binding.imageSalesHistory)
-                                }
+            binding.cartIn.visibility = View.VISIBLE
+            binding.cartInFragmentHome.visibility = View.INVISIBLE
+            apiServiceCart.fetchTakeItemAgency(data, "", hc, nt, nsx)
+                .enqueue(object : Callback<CategoryItemProduct> {
+                    override fun onResponse(
+                        call: Call<CategoryItemProduct>,
+                        response: Response<CategoryItemProduct>
+                    ) {
+                        if (response.isSuccessful) {
+                            listProduct = response.body()?.response?.data!!
+                            if (listProduct.isNotEmpty()) {
+                                val layoutManager = GridLayoutManager(context, spanCount)
+                                binding.recyclerViewSelect.layoutManager = layoutManager
+                                val myListAdapter = ApdapterItemCategory(requireActivity(), true)
+                                myListAdapter.setList(listProduct)
+                                binding.recyclerViewSelect.adapter = myListAdapter
+                            } else {
+                                binding.imageSalesHistory.visibility = View.VISIBLE
+                                binding.txtSalesHistory.visibility = View.VISIBLE
+                                Glide.with(requireContext())
+                                    .asGif()
+                                    .load(R.drawable.fail_history)
+                                    .into(binding.imageSalesHistory)
                             }
                         }
+                    }
 
-                        override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
-                        }
-                    })
+                    override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
+                    }
+                })
+        }
+    }
+
+    private fun setupUI(tittle: String, check: Boolean) {
+        if (tittle != "null") {
+            if (check) {
+                binding.cartIn.isEnabled = false
+                if (CheckToPay.check) {
+                    binding.cartIn.isEnabled = true
+                    binding.cartIn.setOnClickListener {
+                        val bundle =
+                            bundleOf("URL" to "http://18.138.176.213/agency/products/create")
+                        view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
+                    }
+                }
+                binding.cartIn.visibility = View.VISIBLE
+                binding.cartInFragmentHome.visibility = View.INVISIBLE
+                title = tittle
+                loadData()
+
             } else {
-                categoryGenerel = gson.fromJson(data, SelectProdductCategory::class.java)
+                categoryGenerel = gson.fromJson(tittle, SelectProdductCategory::class.java)
                 listProduct = categoryGenerel.listData
                 title = categoryGenerel.title
                 binding.textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15.toFloat())
                 if (listProduct.isNotEmpty()) {
-                    val layoutManager = GridLayoutManager(context, spanCount)
+                    val layoutManager = GridLayoutManager(context, 2)
                     binding.recyclerViewSelect.layoutManager = layoutManager
                     val myListAdapter = ApdapterItemCategory(requireActivity(), false)
                     myListAdapter.setList(listProduct)
+                    myListAdapter.setOnItemClickListener(object :
+                        ApdapterItemCategory.OnItemClickListener {
+                        override fun onEyeClick() {
+                            loadData()
+                        }
+
+                        override fun onItemClick(position: Int, item: DataCategory?) {
+                            showDialog(item)
+                        }
+                    })
                     binding.recyclerViewSelect.adapter = myListAdapter
 
                 } else {
+                    binding.recyclerViewSelect.visibility = View.GONE
                     binding.imageSalesHistory.visibility = View.VISIBLE
                     binding.txtSalesHistory.visibility = View.VISIBLE
                     Glide.with(requireContext())
@@ -446,8 +440,57 @@ private fun setupUIManagerShop(data: String?){
                         .load(R.drawable.fail_history)
                         .into(binding.imageSalesHistory)
                 }
+
             }
 
         }
 
-}}
+    }
+
+    private fun loadData() {
+        if (!category.isNullOrEmpty() || category != "null") {
+            apiServiceCart.fetchTakeItemAgency(category, "", hc, nt, nsx)
+                .enqueue(object : Callback<CategoryItemProduct> {
+                    @SuppressLint("NotifyDataSetChanged")
+                    override fun onResponse(
+                        call: Call<CategoryItemProduct>,
+                        response: Response<CategoryItemProduct>
+                    ) {
+                        if (response.isSuccessful) {
+                            listProduct = response.body()?.response?.data!!
+                            if (listProduct.isNotEmpty()) {
+                                val layoutManager = GridLayoutManager(context, 2)
+                                binding.recyclerViewSelect.layoutManager = layoutManager
+                                val myListAdapter = ApdapterItemCategory(requireActivity(), true)
+                                myListAdapter.setList(listProduct)
+                                myListAdapter.setOnItemClickListener(this@SelectedFragment)
+                                binding.recyclerViewSelect.adapter = myListAdapter
+                                myListAdapter.notifyDataSetChanged()
+                            } else {
+                                binding.recyclerViewSelect.visibility = View.GONE
+                                binding.imageSalesHistory.visibility = View.VISIBLE
+                                binding.txtSalesHistory.visibility = View.VISIBLE
+                                Glide.with(requireContext())
+                                    .asGif()
+                                    .load(R.drawable.fail_history)
+                                    .into(binding.imageSalesHistory)
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
+                    }
+                })
+        }
+    }
+
+    override fun onEyeClick() {
+        loadData()
+    }
+
+    override fun onItemClick(position: Int, item: DataCategory?) {
+        TODO("Not yet implemented")
+    }
+
+
+}

@@ -7,6 +7,7 @@
     <dimen name="forty">40dp</dimen>
     <dimen name="twenty">20dp</dimen>
     <dimen name="twentySp">20sp</dimen>
+    <dimen name="eightteenSp">18sp</dimen>
     <dimen name="twenty_FourSp">24sp</dimen>
     <dimen name="twenty_Four">24dp</dimen>
     <dimen name="seventy_Five">75dp</dimen>

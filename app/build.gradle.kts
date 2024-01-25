@@ -76,5 +76,6 @@ dependencies {
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
     implementation ("com.jpardogo.googleprogressbar:library:1.2.0")
     implementation("com.github.skydoves:balloon:1.6.4")
+    implementation ("com.daimajia.swipelayout:library:1.2.0@aar")
 
 }

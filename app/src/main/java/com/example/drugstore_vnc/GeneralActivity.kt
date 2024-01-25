@@ -1,6 +1,7 @@
 package com.example.drugstore_vnc
 
 import android.annotation.SuppressLint
+
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -55,11 +56,12 @@ class GeneralActivity : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     @SuppressLint("SuspiciousIndentation", "MissingSuperCall")
     override fun onBackPressed() {
+
+        if ((navController?.currentDestination?.id ?: 0) == R.id.homeFragment){
         if (doubleBackToExitPressedOnce) {
-            this.finish()
+            finish()
             return
         }
-
         this.doubleBackToExitPressedOnce = true
             StyleableToast.makeText(
             this@GeneralActivity,
@@ -68,6 +70,9 @@ class GeneralActivity : AppCompatActivity() {
         ).show()
         Handler().postDelayed({
             doubleBackToExitPressedOnce = false
-        }, 2000) // Set the time window for the double click (in milliseconds)
+        }, 2000)}
+        else{
+            super.onBackPressed()
+        }
     }
 }

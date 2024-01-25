@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="WebViewFragment"
+        android:name="com.example.drugstore_vnc.WebViewFragment"
         android:label="WebViewFragment" />
     <fragment
         android:id="@+id/detailFragment"

@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.example.drugstore_vnc.fragment.manager
 
 import android.annotation.SuppressLint
@@ -61,10 +59,10 @@ class InfoManagerFragment : Fragment() {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder
                 .setMessage(getString(R.string.doyouwantlogoutthisaccount))
-                .setNegativeButton(getString(R.string.cancle)) { dialog, _ ->
+                .setNegativeButton(getString(R.string.cancle)) { dialog, which ->
                     dialog.dismiss()
                 }
-                .setPositiveButton(getString(R.string.ok)) { _, _ ->
+                .setPositiveButton(getString(R.string.ok)) { dialog, which ->
                     Logout()
                 }
             val dialog: AlertDialog = builder.create()
