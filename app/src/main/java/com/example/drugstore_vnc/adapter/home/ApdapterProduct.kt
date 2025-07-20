@@ -84,8 +84,16 @@ class ApdapterProduct(private val context: Context) :
         }
         holder.endProduct.visibility = View.GONE
         if (item.so_luong == 0) {
+            val textColorStateList = ColorStateList(
+                arrayOf(
+                    intArrayOf(android.R.attr.state_enabled),
+                    intArrayOf(-android.R.attr.state_enabled)
+                ), intArrayOf(Color.BLACK, Color.WHITE)
+            )
+            holder.btnAdd.setTextColor(textColorStateList)
             holder.endProduct.visibility = View.VISIBLE
             holder.btnAdd.backgroundTintList = ColorStateList.valueOf(Color.GRAY)
+            holder.btnAdd.isEnabled = false
             holder.endProduct.text = context.getString(R.string.outStock)
             holder.price.visibility = View.GONE
             holder.sellPrice.visibility = View.GONE
@@ -122,28 +130,17 @@ class ApdapterProduct(private val context: Context) :
                 mListener!!.onItemClick(position, item)
             }
         }
-        if (!CheckToPay.check) {
-            val textColorStateList = ColorStateList(
-                arrayOf(
-                    intArrayOf(android.R.attr.state_enabled),
-                    intArrayOf(-android.R.attr.state_enabled)
-                ), intArrayOf(Color.BLACK, Color.WHITE)
-            )
-            holder.btnAdd.backgroundTintList = ColorStateList.valueOf(Color.GRAY)
-            holder.btnAdd.setTextColor(textColorStateList)
-            holder.btnAdd.isEnabled = false
-            holder.sellPrice.visibility = View.GONE
-            holder.price.visibility = View.GONE
-        }
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
+
     fun Int.formatAsVND(): String {
         val formattedString = String.format("%,d VND", this)
         return formattedString.replace(",", ".")
     }
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val KM: TextView = itemView.findViewById(R.id.txtItemKM)
         val imageView: ImageView = itemView.findViewById(R.id.imageItemProduct)

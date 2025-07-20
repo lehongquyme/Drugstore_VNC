@@ -198,8 +198,7 @@ class HomeFragment : Fragment() {
                         myListAdapter.setOnItemClickListener(object :
                             ApdapterProduct.OnItemClickListener {
                             override fun onItemClick(position: Int, item: DataCategory?) {
-                                showDialog(item)
-
+                                 showDialog(item)
                             }
                         })
                         recycle.adapter = myListAdapter
