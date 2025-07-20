@@ -235,7 +235,7 @@ class SelectedFragment : Fragment(), ApdapterItemCategory.OnItemClickListener {
         binding.nameItemProduct.text = item?.ten_san_pham ?: "null"
         binding.packingItemProduct.text = item?.quy_cach_dong_goi ?: "null"
         binding.priceItemProduct.text = "${item?.don_gia} VND"
-        if ((item?.discount_price?.toInt() ?: 0) < item!!.don_gia) {
+        if ((item?.discount_price ?: 0) < item!!.don_gia) {
             binding.priceItemProduct.text = "${item.don_gia} VND"
             binding.priceItemProduct.setTypeface(null, Typeface.NORMAL)
             binding.priceItemProduct.setTextColor(
@@ -356,41 +356,6 @@ class SelectedFragment : Fragment(), ApdapterItemCategory.OnItemClickListener {
         }
     }
 
-    private fun setupUIManagerShop(data: String?) {
-        if (data != null && data != "null") {
-            val spanCount = 2
-            binding.cartIn.visibility = View.VISIBLE
-            binding.cartInFragmentHome.visibility = View.INVISIBLE
-            apiServiceCart.fetchTakeItemAgency(data, "", hc, nt, nsx)
-                .enqueue(object : Callback<CategoryItemProduct> {
-                    override fun onResponse(
-                        call: Call<CategoryItemProduct>,
-                        response: Response<CategoryItemProduct>
-                    ) {
-                        if (response.isSuccessful) {
-                            listProduct = response.body()?.response?.data!!
-                            if (listProduct.isNotEmpty()) {
-                                val layoutManager = GridLayoutManager(context, spanCount)
-                                binding.recyclerViewSelect.layoutManager = layoutManager
-                                val myListAdapter = ApdapterItemCategory(requireActivity(), true)
-                                myListAdapter.setList(listProduct)
-                                binding.recyclerViewSelect.adapter = myListAdapter
-                            } else {
-                                binding.imageSalesHistory.visibility = View.VISIBLE
-                                binding.txtSalesHistory.visibility = View.VISIBLE
-                                Glide.with(requireContext())
-                                    .asGif()
-                                    .load(R.drawable.fail_history)
-                                    .into(binding.imageSalesHistory)
-                            }
-                        }
-                    }
-
-                    override fun onFailure(call: Call<CategoryItemProduct>, t: Throwable) {
-                    }
-                })
-        }
-    }
 
     private fun setupUI(tittle: String, check: Boolean) {
         if (tittle != "null") {

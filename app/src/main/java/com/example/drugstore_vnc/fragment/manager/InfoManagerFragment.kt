@@ -34,6 +34,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import androidx.core.net.toUri
 
 
 class InfoManagerFragment : Fragment() {
@@ -59,10 +60,10 @@ class InfoManagerFragment : Fragment() {
             val builder: AlertDialog.Builder = AlertDialog.Builder(context)
             builder
                 .setMessage(getString(R.string.doyouwantlogoutthisaccount))
-                .setNegativeButton(getString(R.string.cancle)) { dialog, which ->
+                .setNegativeButton(getString(R.string.cancle)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                .setPositiveButton(getString(R.string.ok)) { dialog, which ->
+                .setPositiveButton(getString(R.string.ok)) { _, _ ->
                     Logout()
                 }
             val dialog: AlertDialog = builder.create()
@@ -125,7 +126,7 @@ class InfoManagerFragment : Fragment() {
                 binding.taxEditText.text.toString(),
                 binding.emailInforNumberEditText.text.toString(),
                 binding.passwordEditText.text.toString(),
-                Uri.parse(uriPath)
+                uriPath.toUri()
             )
         }
         binding.iconImage.setOnClickListener {
@@ -184,7 +185,7 @@ class InfoManagerFragment : Fragment() {
 
         val imageRequestBody =
             AddImageSignUpGeneral.getRequestBodyFromFile(
-                fileUri ?: Uri.parse("")
+                fileUri ?: "".toUri()
             )
 
         val imagePart =

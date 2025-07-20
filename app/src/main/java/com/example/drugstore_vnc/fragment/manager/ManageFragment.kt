@@ -1,5 +1,6 @@
 package com.example.drugstore_vnc.fragment.manager
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.example.drugstore_vnc.util.CheckToPay
 class ManageFragment : Fragment() {
     private lateinit var binding: FragmentManageBinding
     private var link = "http://18.138.176.213/system/general_information"
+    @SuppressLint("UseKtx")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -31,69 +33,69 @@ class ManageFragment : Fragment() {
         }
 
         binding.constraintLayoutAbout.setOnClickListener {
-            
+
                 val bundle = bundleOf("URL" to "$link/1")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayOuttermsOfUse.setOnClickListener {
-            
+
                 val bundle = bundleOf("URL" to "$link/2")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutPrivacyPolicy.setOnClickListener {
-            
+
                 val bundle = bundleOf("URL" to "$link/3")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutShoppingGuide.setOnClickListener {
-            
+
                 val bundle = bundleOf("URL" to "$link/4")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutPaymentPolicy.setOnClickListener {
-            
+
 
                 val bundle = bundleOf("URL" to "$link/5")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutDeliveryPolicy.setOnClickListener {
-            
+
 
                 val bundle = bundleOf("URL" to "$link/6")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutReturnPolicy.setOnClickListener {
-            
+
 
                 val bundle = bundleOf("URL" to "$link/7")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutManagerWarrantyPolicy.setOnClickListener {
-            
+
 
                 val bundle = bundleOf("URL" to "$link/8")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutInspectionPolicy.setOnClickListener {
-            
+
 
                 val bundle = bundleOf("URL" to "$link/9")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutDuty.setOnClickListener {
-            
+
                 val bundle = bundleOf("URL" to "$link/10")
                 view?.findNavController()?.navigate(R.id.webViewFragment, bundle)
-           
+
         }
         binding.constraintLayoutManagerShop.setOnClickListener {
             view?.findNavController()?.navigate(R.id.managerShopFragment)

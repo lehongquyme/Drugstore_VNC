@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.drugstore_vnc.R
 import com.example.drugstore_vnc.model.portfolio.item.DataCategory
 import com.example.drugstore_vnc.util.AddImageSignUpGeneral.isUrlReachable
-import com.example.drugstore_vnc.util.CheckToPay
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +40,7 @@ class ApdapterProduct(private val context: Context) :
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(item: List<DataCategory>) {
         item.let {
             items = it
@@ -72,9 +72,9 @@ class ApdapterProduct(private val context: Context) :
             }
         }
         if (item.khuyen_mai > 0) {
-            holder.KM.text = "-${item.khuyen_mai}%"
+            holder.itemKM.text = "-${item.khuyen_mai}%"
         } else {
-            holder.KM.visibility = View.GONE
+            holder.itemKM.visibility = View.GONE
         }
         itemsHashTag = item.tags?.map { it.name }!!.toMutableList()
         val recyclerView = ApdapterHashTag(itemsHashTag)
@@ -105,7 +105,7 @@ class ApdapterProduct(private val context: Context) :
             holder.price.text = item.don_gia.formatAsVND()
             holder.price.setTypeface(null, Typeface.NORMAL)
             holder.price.setTextColor(ContextCompat.getColor(context, R.color.black))
-            holder.sellPrice.text = item.discount_price.toInt().formatAsVND()
+            holder.sellPrice.text = item.discount_price.formatAsVND()
             holder.price.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         } else {
             holder.sellPrice.visibility = View.GONE
@@ -136,13 +136,14 @@ class ApdapterProduct(private val context: Context) :
         return items.size
     }
 
+    @SuppressLint("DefaultLocale")
     fun Int.formatAsVND(): String {
         val formattedString = String.format("%,d VND", this)
         return formattedString.replace(",", ".")
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val KM: TextView = itemView.findViewById(R.id.txtItemKM)
+        val itemKM: TextView = itemView.findViewById(R.id.txtItemKM)
         val imageView: ImageView = itemView.findViewById(R.id.imageItemProduct)
         val hashTag: RecyclerView = itemView.findViewById(R.id.recyclerViewHashTag)
         val nameItem: TextView = itemView.findViewById(R.id.nameItemProduct)

@@ -3,7 +3,6 @@
 package com.example.drugstore_vnc.fragment.manager
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.core.net.toUri
 
 class ContactFragment : Fragment() {
 
@@ -73,7 +73,7 @@ class ContactFragment : Fragment() {
         }
         binding.constraintPhone1.setOnClickListener {
             val dialIntent = Intent(Intent.ACTION_DIAL)
-            dialIntent.data = Uri.parse("tel:$phone")
+            dialIntent.data = "tel:$phone".toUri()
             startActivity(dialIntent)
         }
 
@@ -85,18 +85,18 @@ class ContactFragment : Fragment() {
     private fun getOpenFacebookIntent(): Intent {
         return try {
             requireActivity().packageManager.getPackageInfo("com.facebook.katana", 0)
-            Intent(Intent.ACTION_VIEW, Uri.parse(linkFaceBook))
+            Intent(Intent.ACTION_VIEW, linkFaceBook.toUri())
         } catch (e: Exception) {
-            Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/appetizerandroid"))
+            Intent(Intent.ACTION_VIEW, "https://www.facebook.com/appetizerandroid".toUri())
         }
     }
 
     private fun getOpenZaloIntent(): Intent {
         return try {
             requireActivity().packageManager.getPackageInfo("com.zing.zalo", 0)
-            Intent(Intent.ACTION_VIEW, Uri.parse(linkZalo))
+            Intent(Intent.ACTION_VIEW, linkZalo.toUri())
         } catch (e: Exception) {
-            Intent(Intent.ACTION_VIEW, Uri.parse("https://zalo.me/YourZaloPageID"))
+            Intent(Intent.ACTION_VIEW, "https://zalo.me/YourZaloPageID".toUri())
         }
     }
 

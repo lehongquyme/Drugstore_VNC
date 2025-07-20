@@ -37,7 +37,7 @@ class ListCartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListCartBinding.inflate(inflater, container, false)
-        CheckToPay.binding?.bottomNavigationView?.visibility  =View.GONE
+        CheckToPay.binding?.bottomNavigationView?.visibility = View.GONE
         initializeViewModel()
         observeViewModel()
         setupViews()
@@ -45,7 +45,8 @@ class ListCartFragment : Fragment() {
             showTooltip()
         }, 1000)
         binding.imgAlertNote.setOnClickListener {
-            showTooltip()        }
+            showTooltip()
+        }
         return binding.root
     }
 
@@ -67,7 +68,7 @@ class ListCartFragment : Fragment() {
             .setDismissWhenOverlayClicked(false)
             .build()
 
-        balloon.showAlignRight(binding.imgAlertNote)
+        balloon.showAlignEnd(binding.imgAlertNote)
 
         Handler(Looper.getMainLooper()).postDelayed({
             balloon.dismiss()
@@ -84,7 +85,11 @@ class ListCartFragment : Fragment() {
             if (oder > 0) {
                 Navigation.findNavController(requireView()).navigate(R.id.payFragment)
             } else {
-                Toast.makeText(requireContext(), getString(R.string.pleaseAddProduct), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.pleaseAddProduct),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         viewModel.fetchDataCart()
@@ -94,10 +99,12 @@ class ListCartFragment : Fragment() {
             }
         })
     }
+
     private fun updateCheckboxAllState() {
         val allItemsSelected = myListAdapter.areAllItemsSelected()
         binding.checkboxAll.isChecked = allItemsSelected
     }
+
     private fun initializeViewModel() {
         viewModel = ViewModelProvider(
             this@ListCartFragment,
@@ -131,10 +138,12 @@ class ListCartFragment : Fragment() {
             calculateTotalForSelectedItems()
         }
     }
+
     private fun calculateTotalForSelectedItems() {
         val total = myListAdapter.totalPriceForSelectedItems()
         updateTotalViews(total)
     }
+
     private fun updateTotalViews(total: TotalPrice) {
         binding.priceAmongTotalProduct.text = total.price.toString()
         binding.amongTotalProduct.text = total.among.toString()
@@ -146,18 +155,18 @@ class ListCartFragment : Fragment() {
         viewModel.amongCart.observe(viewLifecycleOwner) { products ->
             products?.let {
                 val productItem = it.products.data
-                listCart= productItem
+                listCart = productItem
                 myListAdapter.setList(productItem)
                 var totalPrice = 0
                 var among = 0
 
-                listCart.forEach {  data ->
-                        totalPrice += data.so_luong * data.discount_price
-                        among += data.so_luong
+                listCart.forEach { data ->
+                    totalPrice += data.so_luong * data.discount_price
+                    among += data.so_luong
 
                 }
                 binding.priceAmongTotalProduct.text = totalPrice.toString()
-                binding.amongTotalProduct.text =among.toString()
+                binding.amongTotalProduct.text = among.toString()
                 binding.priceAmongTotalOders.text = listCart.size.toString()
                 oder = listCart.size
             }
