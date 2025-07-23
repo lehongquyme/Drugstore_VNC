@@ -1,0 +1,137 @@
+package com.example.drugstore_vnc.privateCustomers
+
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.os.Bundle
+import android.text.InputType
+import android.view.MotionEvent
+import androidx.appcompat.app.AppCompatActivity
+import com.example.drugstore_vnc.ForgotActivity
+import com.example.drugstore_vnc.GeneralActivity
+import com.example.drugstore_vnc.R
+import com.example.drugstore_vnc.client.CallAPI
+import com.example.drugstore_vnc.client.ClientAPI
+import com.example.drugstore_vnc.databinding.ActivityPrivateCustomersBinding
+import com.example.drugstore_vnc.local.SharedPreferencesToken
+import com.example.drugstore_vnc.privateCustomers.model.ResponseInforCustomer
+import com.example.drugstore_vnc.util.funGeneralCheck
+import io.github.muddz.styleabletoast.StyleableToast
+
+
+class PrivateCustomersActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPrivateCustomersBinding
+    private val apiService = ClientAPI.getClient().create(SignInCustomersAPI::class.java)
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        var check = false
+        super.onCreate(savedInstanceState)
+        binding = ActivityPrivateCustomersBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.passwordEditText.setOnTouchListener { _, event ->
+            val drawableRight = 2 // Chỉ số 2 ứng với drawableEnd
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= binding.passwordEditText.right - binding.passwordEditText.compoundDrawables[drawableRight].bounds.width()) {
+                    // Xác định xem người dùng chạm vào phần drawableEnd hay không
+                    check = !check
+                    if (check) {
+                        binding.passwordEditText.inputType =
+                            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                        binding.passwordEditText.setCompoundDrawablesWithIntrinsicBounds(
+                            0,
+                            0,
+                            R.drawable.eyes_open,
+                            0
+                        )
+                    } else {
+                        binding.passwordEditText.inputType =
+                            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                        binding.passwordEditText.setCompoundDrawablesWithIntrinsicBounds(
+                            0,
+                            0,
+                            R.drawable.eyes_close,
+                            0
+                        )
+                    }
+                    return@setOnTouchListener true
+                }
+            }
+            return@setOnTouchListener false
+        }
+        binding.txtForgot.setOnClickListener {
+            val intent = Intent(this@PrivateCustomersActivity, ForgotActivity::class.java)
+            val myBooleanValue = false
+            intent.putExtra("Forgot", myBooleanValue)
+            startActivity(intent)
+        }
+        binding.txtSignUpPrivate.setOnClickListener {
+            startActivity(Intent(this, SignupPrivateCustomersActivity::class.java))
+        }
+        binding.btnLogin.setOnClickListener {
+            signInPharmacy(
+                binding.phoneNumberEditText.text.toString(), binding
+                    .passwordEditText.text.toString()
+            )
+        }
+    }
+
+    private fun signInPharmacy(
+        username: String,
+        password: String,
+    ) {
+        val checkPhone = funGeneralCheck().checkNullDataPhone(this@PrivateCustomersActivity,
+            binding.phoneNumberEditText,
+            binding.layoutInputPhoneCustomer
+        )
+        val checkPass = funGeneralCheck().checkNullDataPassword(this@PrivateCustomersActivity,
+            binding.passwordEditText,
+            binding.layoutInputPassCustomer
+        )
+        if (checkPass && checkPhone) {
+            val call = apiService.fetchloginCustomersUser(
+                username,
+                password,
+            )
+
+            CallAPI().callRetrofitSignIn(
+                call,
+                object : CallAPI.AuthCallback {
+                    override fun onTokenReceived(token: ResponseInforCustomer, pharmacy: String?) {
+                        SharedPreferencesToken(this@PrivateCustomersActivity).saveToken(token,pharmacy)
+                    }
+
+                    override fun onSignInSuccess(checkSignIn: Int) {
+                        if (checkSignIn == 1) {
+                            StyleableToast.makeText(this@PrivateCustomersActivity,
+                                getString(R.string.success),
+                                R.style.mytoast).show()
+                            startActivity(
+                                Intent(
+                                    this@PrivateCustomersActivity,
+                                    GeneralActivity::class.java
+                                )
+                            )
+                            this@PrivateCustomersActivity.finish()
+                        }
+
+                    }
+
+                    override fun onSignInFail(check:String) {
+                        binding.layoutInputPhoneCustomer.error = null
+                        binding.layoutInputPassCustomer.error = null
+                        if (check == "Tài khoản không tồn tại") {
+
+                            binding.layoutInputPhoneCustomer.error = getString(R.string.numberFail)
+                        }
+                        if (check == "Sai mật khẩu") {
+                            binding.layoutInputPassCustomer.error =getString(R.string.failPass)
+                        }
+
+                    }
+                }
+            )
+
+        }
+    }
+}
